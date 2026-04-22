@@ -1,0 +1,161 @@
+\newpage
+\appendix 
+
+% 1. Cria a âncora para o link do sumário funcionar corretamente
+\phantomsection 
+
+% 2. Adiciona ao sumário (agora o link apontará para cá)
+\addcontentsline{toc}{chapter}{APÊNDICE A - CONTRAEXEMPLOS PARA A RELAÇÃO ENTRE EXPECTATIVA DE VIDA E ANUIDADES}
+
+% 3. Título centralizado
+\begin{center}
+    APÊNDICE A - CONTRAEXEMPLOS PARA A RELAÇÃO ENTRE EXPECTATIVA DE VIDA E ANUIDADES
+\end{center}
+
+% 4. Faz o label 'pegar' o valor A e não o número do capítulo anterior
+\renewcommand{\thechapter}{Apêndice A}
+\refstepcounter{chapter}
+\label{apendice_A}
+
+% 5. Configuração das equações
+\counterwithin{equation}{chapter}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{A.\arabic{equation}}
+
+Seja $PM^{i}_{x}$ a provisao matemática de um segurado de idade $x$, calculada a partir da tábua de mortalidade $i$. Logo, sejam $e^{*}_{\overline{X}}$  expectativa de vida na idade média segundo uma tábua comparativa qualquer e $PM^{*}_{x}$ provisão matemática correspondente, sendo $e^{\kappa}_{\overline{X}}$ a expectativa de vida na idade média segundo a tábua de referência e $PM^{\kappa}_{x}$ a respectiva provisão matemática.
+
+Para analisar a implicação $e^{*}_{x} \geq e^{\kappa}_{x} \Rightarrow PM^{*}_{x} \geq PM^{\kappa}_{x}$ é necessário entender, primeramente, a relação matemática entre $e_{x}$ e as anuidades atuariais, dado que a provisão $PM$ depende explicitamente dos valores da anuidades atuariais que a compõem. Tomando, como exemplo, a anuidade atuarial vitalicia postecipada $a_{x}$, tem-se que:
+
+\begin{equation}
+    e_{x} = \sum_{t=1}^{\omega - x} {}_{t}p_x
+    \label{apB:ex}
+\end{equation}
+
+\begin{equation}
+    a_{x} = \sum_{t=1}^{\omega - x} v^t \cdot {}_{t}p_x
+    \label{apB:ax}
+\end{equation}
+
+As equações \ref{apB:ex} e \ref{apB:ax} possuem uma representação em termos de álgebra linear. Para tanto, primeiro é necessário definir os vetores coluna de dimensão $t = \omega - x$ no espaço $\mathbb{R}^k$:
+
+\begin{equation}
+    \mathbf{p}_x = 
+    \begin{bmatrix} 
+    {}_{1}p_x \\  
+    {}_{2}p_x \\ 
+    \vdots \\ 
+    {}_{t}p_x 
+    \end{bmatrix}, \quad 
+    \mathbf{v} = 
+    \begin{bmatrix} 
+    v^1 \\ 
+    v^2 \\ 
+    \vdots \\ 
+    v^t 
+    \end{bmatrix}, \quad 
+    \mathbf{1} = 
+    \begin{bmatrix} 
+    1 \\ 
+    1 \\ 
+    \vdots \\ 
+    1 
+    \end{bmatrix}
+\end{equation}
+
+Dessa forma, as equações \ref{apB:ex} e \ref{apB:ax} podem ser expressas como produtos escalares facilitando a visualiação algébrica da seguinte forma:
+
+\begin{equation}
+    e_{x} = \mathbf{1}^\top \mathbf{p}_x
+    \label{apB:exvetor}
+\end{equation}
+
+\begin{equation}
+    a_{x} = \mathbf{v}^\top \mathbf{p}_x
+    \label{apB:axvetor}
+\end{equation}
+
+As formulas \ref{apB:exvetor} e \ref{apB:axvetor} evidênciam que única diferença entre a expectativa de vida e a anuidade atuarial é o vetor de juros. Isso corrobora com a intuição de se $e_x$ é maior, então $a_x$ também será e consequemente, a provisão matemática também será.
+\newpage
+Supondo vetores de probabilidade de tamanho $t=3$, sejam $p^{*}=(p^{*}_{0}, p^{*}_{1}, p^{*}_{2})$ e $p^{\kappa}=(p^{\kappa}_{0}, p^{\kappa}_{1}, p^{\kappa}_{2})$ correspondentes às tábuas comparativa e referência, respectivamente. Tem-se que:
+
+\begin{equation}
+    e^{*}_x \geq e^{\kappa}_{x}
+\end{equation}
+\begin{equation}
+    {}_{1}p^{*}_x + {}_{2}p^{*}_x + {}_{3}p^{*}_x \geq {}_{1}p^{\kappa}_x + {}_{2}p^{\kappa}_x + {}_{3}p^{\kappa}_x
+    \label{apB:desi1}
+\end{equation}
+Então é esperado que,
+\begin{equation}
+    a^{*}_x \geq a^{\kappa}_{x}
+\end{equation}
+\begin{equation}
+    {}_{1}p^{*}_x v + {}_{2}p^{*}_x v^{2} + {}_{3}p^{*}_x v^{3} \geq {}_{1}p^{\kappa}_x v + {}_{2}p^{\kappa}_x v^{2} + {}_{3}p^{\kappa}_x v^{3}
+\end{equation}
+\begin{equation}
+    {}_{1}p^{*}_x  + {}_{2}p^{*}_x  v + {}_{3}p^{*}_x  v^2 \geq {}_{1}p^{\kappa}_x  + {}_{2}p^{3}_x  v + {}_{3}p^{\kappa}_x  v^2
+    \label{apB:desi2}
+\end{equation}
+
+Definindo as difernças $d_i = {}_{i}p^{*}_x - {}_{i}p^{\kappa}_x$ e com ${}_{i}p^{*}_x,{}_{i}p^{\kappa}_x \in [0,1]$, logo $d_i \in [-1, 1]$, então as desigualdades \ref{apB:desi1} e \ref{apB:desi2} tornam-se nas desiguladaes \ref{apB:dif_ex} e \ref{apB:dif_ax}, respectivamente.
+
+\begin{equation}
+    D_1 = d_0 + d_1 + d_2 \geq 0
+    \label{apB:dif_ex}
+\end{equation}
+\begin{equation}
+    D_2 = d_0 + d_1v + d_2v^2 \geq 0
+    \label{apB:dif_ax}
+\end{equation}
+
+Onde a desigualdade \ref{apB:dif_ex} é uma soma simples, enquanto a desigualdade \ref{apB:ax} é uma soma ponderada com coeficientes decrescentes. Para que a implicação $e^{*}_x \geq e^{\kappa}_x \Rightarrow a^{*}_x \geq a^{\kappa}_x$ seja falsa, é necessário que \ref{apB:dif_ex} seja verdadeira mas \ref{apB:dif_ax} falsa. Isto é, é necessário que $D_1 \geq 0$ e $D_2 < 0$. Isso ocorre quando $d_1$ é negativa, gerando a desigualdade dupla na expressão \ref{apB:cond_geral}.
+
+\begin{equation}
+    d_1 + d_2 + d_3 \geq 0 \Rightarrow d_2 + d_3 \geq -d_1
+\end{equation}
+\begin{equation}
+    d_1 + d_2v + d_3v^2 < 0 \Rightarrow d_2v + d_3v^2 < -d_1 
+\end{equation}
+
+Ou seja, para que ambas inequações sejam verdadeiras, é necessário que:
+
+\begin{equation}
+    d_2v + d_3v^2 < -d_1 \leq d_2 + d_3
+    \label{apB:cond_geral}
+\end{equation}
+
+Como $v<1$, a condição da inequação dupla \ref{apB:cond_geral} é satisfeita quando as probabilidades iniciais na tábua de referência são maiores que as da tábua comparativa, ou seja, ${}_{1}p^{\kappa}_x > {}_{1}p^{*}_x$. Se ${}_{1}p^{\kappa}_x > {}_{1}p^{*}_x$, então $d_1$ é negativo, permitindo que a condição  (esperança de vida maior ou igual) seja mantida por compensações nos termos $d_2$ e $d_3$, enquanto $D_2<0$ (anuidade menor) ocorre porque o fator $v<1$ reduz o impacto dessas compensações futuras no valor presente.
+
+Além deste contra-exemplo algebrico, é possível, a partir de simulações computacionais, desenvolver um algoritmo que forneça um contra-exemplo numérico com valores mais realistas, como mostra a Figura \ref{fig:pseudocodigo_numerico}.
+
+\begin{figure}[H]
+    \singlespacing\caption{Pseudocódigo Contra-exemplo Numérico}
+    \begin{algorithm}[H]
+        \caption{Geração de Contra-exemplos Numérico}
+        \label{alg:contraexemplo}
+        \begin{algorithmic}[1]
+        \STATE \textbf{Parâmetros:}
+        \STATE $v \gets \frac{1}{1+i}$ \hfill $\triangleright$ Fator de desconto
+        \STATE $n \gets 100.000$ \hfill $\triangleright$ Número de tentativas
+        \STATE $s$ \hfill $\triangleright$ Semente reprodutória
+        \STATE \textbf{Inicialização:}
+        \STATE $\text{solucoes} \gets [\,]$ \hfill $\triangleright$ Lista vazia para armazenar resultados
+        \FOR{$i = 1$ \textbf{até} $n$}
+            \STATE \textbf{Gerar} ${}_{1}p^{*}_x, {}_{2}p^{*}_x, {}_{3}p^{*}_x, {}_{1}p^{\kappa}_x, {}_{2}p^{\kappa}_x, {}_{3}p^{\kappa}_x \sim U(0,1)$ \hfill $\triangleright$ Números aleatórios entre 0 e 1
+            \STATE \textbf{Verificar Condições:}
+            \STATE $\text{cond}_1 \gets ({}_{1}p^{*}_x + {}_{2}p^{*}_x + {}_{3}p^{*}_x) \geq ({}_{1}p^{\kappa}_x + {}_{2}p^{\kappa}_x + {}_{3}p^{\kappa}_x)$ \hfill $\triangleright$ Condição sobre $e_x$
+            \STATE $\text{cond}_2 \gets ({}_{1}p^{*}_x + v {}_{2}p^{*}_x + v^2 {}_{3}p^{*}_x) < ({}_{1}p^{\kappa}_x + v {}_{2}p^{\kappa}_x + v^2 {}_{3}p^{\kappa}_x)$ \hfill $\triangleright$ Condição sobre $a_x$
+            \STATE $\text{cond}_3 \gets {}_{1}p^{*}_x > {}_{2}p^{*}_x > {}_{3}p^{*}_x$ \hfill $\triangleright$ Decrescimento em $*$
+            \STATE $\text{cond}_4 \gets {}_{1}p^{\kappa}_x > {}_{2}p^{\kappa}_x > {}_{3}p^{\kappa}_x$ \hfill $\triangleright$ Decrescimento em $r$
+            \IF{$\text{cond}_1 \land \text{cond}_2 \land \text{cond}_3 \land \text{cond}_4$}
+                \STATE $\text{solucoes.adicionar}(({}_{1}p^{*}_x, {}_{2}p^{*}_x, {}_{3}p^{*}_x, {}_{1}p^{\kappa}_x, {}_{2}p^{\kappa}_x, {}_{3}p^{\kappa}_x))$
+            \ENDIF
+        \ENDFOR
+        \RETURN $\text{solucoes[0]}$ \hfill $\triangleright$ Retorna a primeira solução
+        \end{algorithmic}
+    \end{algorithm}
+    \fonte{Elaboração própria (2026).}
+    \label{fig:pseudocodigo_numerico}
+\end{figure}
+
+Com uma taxa de juros anual de 5\%, por exemplo, o algoritmo \ref{alg:contraexemplo} retorná os valores que satizfazem a condição de $e^{*}_{x} \geq e^{\kappa}_{x}$, porém resultam em $a^{*}_{x} < a^{\kappa}_{x}$. São eles: ${}_{1}p^{*}_x = 0,6447, {}_{2}p^{*}_x = 0,5600, {}_{3}p^{*}_x = 0,1214, {}_{1}p^{\kappa}_x = 0,8915, {}_{2}p^{\kappa}_x = 0,4187, {}_{3}p^{\kappa}_x = 0,0104$. Esse valores resultam em $e^{*}_{x} = 1,3261$, $e^{\kappa}_{x} = 1,3205$, porém, $a^{*}_{x} = 1,2882$ e $a^{\kappa}_{x} = 1,2996$. Ou seja, a condição $e^{*}_{x} \geq e^{\kappa}_{x}$, para esses valores, não implicou em $a^{*}_{x} \geq a^{\kappa}_{x}$.

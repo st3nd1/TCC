@@ -1,0 +1,150 @@
+\chapter{\textbf{METODOLOGIA}}
+Esta seção descreve os métodos utilizados para investigar a questão central da pesquisa: qual é o impacto da aplicação dos critérios mínimos para a seleção de tábuas de mortalidade, conforme o Art. 36, inciso I, da Seção VI, Capítulo IV, da Portaria MTP nº 1.467/2022, sobre as provisões matemáticas. São apresentados os tipos de pesquisa empregados, as bases de dados utilizadas e os procedimentos de tratamento adotados. Em seguida, expõem-se os critérios considerados na análise dos dados.
+
+\section{\textbf{Tipos de pesquisa}}
+Esta pesquisa tem natureza quantitativa, pois se fundamenta no cálculo de passivos atuariais. Quanto à sua abordagem, classifica-se como exploratória, com o objetivo de identificar e descrever cenários e condições em que o critério normativo estabelecido pelo Art. 36 da Portaria MTP nº 1.467/2022 seja considerado insuficiente \cite{gil2008}.
+
+O estudo emprega um desenho empírico-aplicado. É aplicado porque utiliza métodos estabelecidos a dados simulados para expor os mecanismos causais por trás dos resultados observados. É empírico por estar alicerçado na análise de dados, por meio de simulações computacionais sob condições controladas \cite{richardson2017}. 
+
+\section{\textbf{Base de dados}}
+Para atingir os objetivos deste trabalho, foram utilizados dados simulados computacionalmente. A utilização de dados simulados é fundamental para isolar o efeito da estrutura etária da população sobre o passivo atuarial. Ao criar diferentes populações sintéticas, torna-se possível avaliar como variações na distribuição etária interagem com diferentes tábuas de mortalidade.
+
+Assim, foram simulados quatro perfis etários distintos, abrangendo conjuntamente a população ativa e a população inativa do RPPS. A primeira massa populacional simulada representa um RPPS com maior concentração de segurados em idades mais jovens, contemplando predominantemente servidores ativos e uma pequena proporção de beneficiários. A segunda corresponde a uma massa populacional etariamente equilibrada, caracterizando um RPPS com distribuição relativamente estável de segurados entre diferentes faixas etárias, incluindo tanto trabalhadores em início de carreira quanto servidores em idades mais avançadas e beneficiários em gozo de benefício. 
+
+A terceira massa populacional representa um RPPS com maior concentração de segurados em idades mais elevadas, refletindo uma estrutura com maior proporção de servidores próximos da aposentadoria e de beneficiários. Por fim, a quarta massa populacional simulada apresenta uma característica bimodal, representando um RPPS com duas concentrações distintas de segurados: um grande grupo de servidores jovens recém-admitidos e outro grupo expressivo de servidores mais antigos, próximos da aposentadoria, além de beneficiários já aposentados. Todas as bases simuladas contemplam as variáveis descritas no Quadro \ref{qua:vars_simuladas}.
+
+\vspace{0.5cm}
+
+\begin{quadro}[htbp]
+    \centering
+    \small
+    \caption{Descrição das Variáveis Simuladas}
+    \label{qua:vars_simuladas}
+    \begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|} 
+        \hline
+        \textbf{Variáveis} & \textbf{Descrição} \\
+        \hline
+        Gênero & Variável categórica que assume valores entre masculino e feminino. \\
+        \hline
+        Idade & Variável numérica que representa a idade de cada segurado. \\
+        \hline
+    \end{tabularx}
+    \fonte{Elaboração própria em conformidade com o delineamento da pesquisa (2026).}
+\end{quadro}
+
+A construção de cada massa populacinal foi realizada por meio de simulação computacional implementada em Python, utilizando a biblioteca NumPy \cite{numpy2020}. O procedimento de simulação foi operacionalizado a partir de proporções por faixa etária e o número total de segurados a serem gerados. Para cada uma das 16 faixas etárias compreendidas entre 18 e 100 anos, o número de indivíduos a serem alocados naquela faixa foi obtido pelo produto entre o total de segurados e a proporção correspondente.
+
+Em seguida, foram gerados numeros inteiros com distribuição uniforme discreta dentro dos limites da faixa. Ao final do processo, o vetor completo de idades foi embaralhado aleatoriamente, de modo a eliminar qualquer ordenação residual por faixa. Cada massa foi gerada com 200.000 segurados, sendo 1000.000 do sexo masculino e 100.000 do sexo feminino. Os códigos elaborado para realização das populações podem ser encontrados no endereço eletronico contido no ~\ref{apendice_C}.
+
+\section{\textbf{Procedimentos de análise}}
+Esta seção descreve a sequência de cálculos e etapas analíticas que foram realizadas. Esta sequência é formada por quatro etapas: 1) a operacionalização do critério da Portaria MTP Nº 1.467/2022; 2) o cálculo das provisões matemáticas; 3) a análise comparativa e a identificação de inconsistências; 4) a investigação de fatores explicativos. 
+
+O primeiro passo consiste em executar o algoritmo representado pela Figura \ref{fig:fluxograma}. Este fluxograma detalha o processo de seleção das tábuas comparativas que atendem ao critério do Art. 36. A decisão central do processo ocorre ao comparar a expectativa de vida da tábua comparativa com a da tábua de referência. Se a tábua comparativa apresentar uma expectativa de vida maior ou igual à da tábua de referência, ela é aprovada e incluída no conjunto de tábuas válidas para o grupo do gênero em análise. Caso contrário, a tábua é descartada por não atender ao critério mínimo estabelecido pela portaria. Todas as tábuas que foram utilizadas nessa etapa podem ser encontradas no \ref{apendice_C}.
+
+\begin{figure}[H]
+    \centering
+    \singlespacing\caption{Fluxograma do Art. 36 da Portaria MTP Nº 1.467/2022}
+    \label{fig:fluxograma}
+    
+    \resizebox{0.975\textwidth}{!}{%
+    \begin{tikzpicture}[node distance=2.5cm]
+    % Estilos
+    \tikzstyle{startstop} = [ellipse, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+    \tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=1.2cm, text centered, draw=black, text width=6cm, align=center]
+    \tikzstyle{decision} = [diamond, aspect=2, text centered, draw=black, text width=5cm, align=center]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+
+    % Nós
+    \node (start) [startstop] {Base de dados};
+
+    \node (p1) [process, below of=start] {Calcula-se a idade média geral do grupo};
+    
+    \node (p2) [process, below of=p1] {A base é dividida em subconjuntos, um para cada gênero};
+    
+    \node (p3) [process, below of=p2] {Utilizando a idade média calculada, busca-se a expectativa de vida na tábua de referência (IBGE 2024 específica para aquele gênero)};
+    
+    \node (p4) [process, below of=p3] {Para cada tábua comparativa, busca-se a expectativa de vida na idade média do grupo};
+    
+    \node (d1) [decision, below of=p4, yshift=-1.5cm] {A expectativa de vida da tábua comparativa é maior ou igual à tábua de referência?};
+    
+    \node (no1) [startstop, below left of=d1, xshift=-5cm, yshift=-2.5cm, text width=5cm, align=center] {A tábua não atinge o critério mínimo e é descartada};
+    
+    \node (yes1) [startstop, below right of=d1, xshift=5cm, yshift=-2.5cm, text width=5.5cm, align=center] {Conjunto de tábuas aprovadas para o grupo do gênero em análise};
+    
+    \node (p5) [process, below of=yes1, yshift=-1.5cm] {Calcular a provisão matemática para as tábuas aprovadas e a tábua de referência};
+
+    % Conexões
+    \draw [arrow] (start) -- (p1);
+    \draw [arrow] (p1) -- (p2);
+    \draw [arrow] (p2) -- (p3);
+    \draw [arrow] (p3) -- (p4);
+    \draw [arrow] (p4) -- (d1);
+    \draw [arrow] (d1) -| (no1) node[near start, left] {Não};
+    \draw [arrow] (d1) -| (yes1) node[near start, right] {Sim};
+    \draw [arrow] (yes1) -- (p5);
+
+    \end{tikzpicture}
+    }
+    
+    \fonte{Elaboração própria a partir da Portaria MTP Nº 1.467/2022 (2026).}
+\end{figure}
+
+As provisões matemáticas calculadas com as tábuas comparativas aprovadas baseiam-se na hipótese de que essas tábuas são representativas da massa, sem a realização de testes de aderência nesse processo. Isto por que o uso de dados totalmente simulados impossibilida a realização de testes de aderência. Ou seja, ao passarem no critério do Art. 36, as tábuas são consideradas adequadas para a população em análise, independentemente de sua aderência estatística aos dados observados.
+
+A ausência de dados reais observados impede a obtenção de uma experiência de mortalidade empírica, que é utilizada para os testes estatístico de aderência de tábuas de mortalidade \cite{vanzillottaS_soares_2020}. Sem dados históricos de mortalidade efetivamente observada, não há base empírica para refutar ou confirmar a adequação da tábua à massa segurada. Portanto, a assunção de representatividade da tábua, nesse contexto, reflete uma consequência da ausência de experiência real que permita contestá-la.
+
+Em relação à segunda etapa, após a seleção das tábuas que atendam ao critério da expectativa de vida, foram calculadas as provisões matemáticas para os grupos de segurados, segregados por sexo conforme determina o Art. 36 da portaria. Esses cálculos foram realizados utilizando, primeiramente, à tábua do IBGE 2024 extrapolada (tabua mínima de acordo com a Portaria 1.467/2022) e, em seguida, cada tábua comparativa considerada válida na etapa anterior. A replicabilidade dos cálculos atuariais feitos é garantida pela especificação clara das premissas, conforme detalhado no Quadro \ref{qua:hipoteses_atuariais}.
+\vspace{0.25cm}
+\begin{quadro}[htbp]
+    \centering
+    \small
+    \caption{Hipóteses Atuariais}
+    \label{qua:hipoteses_atuariais}
+    \begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|} 
+        \hline
+        \textbf{Hipótese} & \textbf{Valor} \\
+        \hline
+        Taxa de juros & 5,0\% a.a. \\
+        \hline
+        Taxa de crescimento salarial & 1,0\% a.a \\
+        \hline
+        Idade de entrada no plano & 18 anos \\
+        \hline
+        Idade de aposentadoria & 65 anos (homens); 62 anos (mulheres) \\
+        \hline
+        Salário de entrada & $R\$ 5.000,00$ \\
+        \hline
+        Tábua de mortalidade & IBGE 2024 extrapolada e tábuas comparativas \\
+        \hline
+        Tábua de invalidez & Não considerada \\
+        \hline
+    \end{tabularx}
+    \fonte{Elaboração própria em conformidade com o delineamento da pesquisa (2026).}
+\end{quadro}
+
+Devido ao escopo da presente pesquisa se restringir apenas à análise das tábuas de mortalidade, não foram considerados outros decrementos, como entrada em invalidez ou desligamento do serviço público. Além disso, o único benefício considerado será o de aposentadoria por idade, sendo o valor desse benefício futuro $(B_r)$ correspondente a 80\% do último salário do segurado, calculado a partir da equação \ref{eq:Br}, em que $is$ representa a taxa de crescimento salarial, $S_y$ o salário na idade de entrada e $r-y$ o tempo total de contribuição. 
+\begin{equation}
+    B_r = S_y \cdot (1+is)^{r-y} \cdot 0,8
+    \label{eq:Br}
+\end{equation}
+
+A terceira etapa tem como ponto central a comparação entre a PM calculada com a tábua da referência (IBGE 2024 extrapolada para o gênero em análise) e a PM calculada com cada tábua comparativa válida de acordo com critério do Art. 36, obtidas após execução do algoritmo da Figura \ref{fig:fluxograma}. Uma inconsistência será identificada sempre que uma tábua comparativa satisfizer o critério regulatório, isto é, $e^{*}_{\overline{X}} \geq e^{\kappa}_{\overline{X}}$, mas produzir uma PM inferior.
+
+Uma vez identificadas as inconsistências, a quarta etapa procederá à investigação de suas causas subjacentes. Como evidenciado nas equações \ref{eq:pmbac} e \ref{eq:pmbc} - sendo que a equação \ref{eq:pmbc} pode assumir a forma da equação \ref{eq:pmbcteto} a depender do benefício do segurado - a PM resulta da subtração entre o fluxo de caixa do VABF e o fluxo de caixa do VACF. O primeiro cresce ou diminui a depender do nível de sobrevivência na tábua nas idades pós-aposentadoria $[65, \omega]$. Já o segundo pode crescer ou diminuir conforme a sobrevivência da tábua nas idades contributivas $[18, 64]$.
+
+Dessa forma, seja $\Delta VACF$ a variação do VACF entre uma tábua comparativa qualquer e a tábua de referência, e $\Delta VABF$ a variação do VABF entre essas mesmas tábuas. Nesse contexto, é possível que uma tábua comparativa apresente $\Delta VACF > \Delta VABF$ e resulte em PM inferior ao mesmo tempo que a melhoria de sobrevivência nas idades eleve $e^{*}_x$, em relação ao $e^{\kappa}_x$ da tábua de referência. Portanto, a investigação será feita a partir da análise da curva de $l_x$, pois esta indica como as probabilidades de sobrevivência ${}_{t}p_{x}$ impactam uma população, ou seja, expõe como a forma relativa das idades de contribuição e o gozo de benefício podem determinar as inconsistências observadas.
+
+Para tal, propõe-se um índice cujo propósito é quantificar a diferença entre os níveis de sobrevivência na tábua comparativa, tanto na fase contributiva quanto na fase de gozo do benefício, em relação à tábua de referência. A partir desse índice, é possível indicar, antes do cálculo efeito da PM, se a tábua comparativa poderá atender ao critério normativo e, ainda assim, produzir uma PM inferior àquela obtida pela tábua de referência. Assim, sejam $F$ um conjunto de faixas etárias $f$, $l_f$ o número de pessoas na faixa etária $f$ e $w(f)$ a proporção correspondente a essa faixa etária em relação ao total de segurados. Logo, para cada tábua comparativa $*$, o índice proposto é obtido conforme a equação \ref{eq:indice}.
+
+\begin{equation}
+    I_F = \left(\frac{\sum_{f \in F}{} l^{*}_{f} \cdot w(f)}{\sum_{f \in F}{} l^{\kappa}_{f} \cdot w(f)} - 1 \right) \cdot 100
+    \label{eq:indice}
+\end{equation}
+
+Vale ressaltar que o índice da equação \ref{eq:indice} deve ser separado entre faixas etárias contributivas e faixas etárias em gozo de benefício, devido à subtração dos fluxos de caixa discutida anteriormente. Quando aplicado às idades contributivas $[18, r-1]$, o índice é denominado $I_{Ativos}$; quando aplicado às idades de aposentadoria $[r, \omega]$, é denominado $I_{Aposentados}$.
+
+A interpretação do índice parte do numerador $\sum_{f \in F} l^{*}_{f} \cdot w(f)$ representa a massa de sobrevivência da tábua comparativa nas faixas etárias de $F$, ponderada pela distribuição demográfica da população analisada. O denominador $\sum_{f \in F} l^{\kappa}_{f} \cdot w(f)$ equivale à mesma massa, calculada para a tábua de referência. A razão entre esses dois termos, subtraída de um e multiplicada por cem, expressa em termos percentuais o quanto a tábua comparativa diverge da referência em cada fase do ciclo previdenciário.
+
+Um valor $I_{Ativos} > 0$ indica que, nas idades em que os segurados ainda contribuem para o plano, a tábua comparativa registra um nível de sobrevivência superior ao da referência, ponderado pela estrutura etária da massa. Como o VACF cresce com a probabilidade de o segurado permanecer vivo ao longo da fase contributiva, um $I_{Ativos}$ positivo sinaliza variação positiva sobre o VACF da tábua comparativa em relação ao da tábua de referência. De forma análoga, $I_{Aposentados} > 0$ indica que a tábua comparativa projeta maior sobrevivência nas idades de aposentadoria, exercendo uma variação positiva sobre o VABF, uma vez que benefícios são pagos por mais tempo. Valores negativos de cada índice expressam o comportamento oposto. Ou seja, menor sobrevivência ponderada em relação à referência, com variação negativa sobre o respectivo componente da PM.
+
+A interpretação conjunta dos dois índices permite, portanto, inferir o sentido esperado da variação da PM antes de realizá-la. Quando $I_{Ativos} > I_{Aposentados}$, espera-se que a variação sobre o VACF tende a superar a variação sobre o VABF, de modo que a diferença $\text{VABF} - \text{VACF}$ pode ser menor na tábua comparativa, resultando em PM inferior. Em contrapartida, quando $I_{Aposentados} > I_{Ativos}$, espera-se que o diferencial de sobrevivência nas idades avançadas seja proporcionalmente maior do que nas idades contributivas, favorecendo o crescimento do VABF em relação ao do VACF e, em geral, produzindo PM superior ou equivalente à da referência. Por fim, a ponderação $w(f)$ torna o índice sensível ao perfil demográfico da massa. Portanto, a mesma tábua pode apresentar valores distintos de $I_{Ativos}$ e $I_{Aposentados}$ em populações com estruturas etárias diferentes.

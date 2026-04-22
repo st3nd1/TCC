@@ -1,0 +1,282 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% ── Tema e cores ──────────────────────────────────────────────────────────────
+\usetheme{Madrid}
+\usecolortheme{whale}
+\setbeamercolor{palette primary}{bg=blue!80!black, fg=white}
+\setbeamercolor{palette secondary}{bg=blue!60!black, fg=white}
+\setbeamercolor{palette tertiary}{bg=blue!40!black, fg=white}
+\setbeamercolor{palette quaternary}{bg=blue!20!black, fg=white}
+\setbeamercolor{structure}{fg=blue!70!black}
+\setbeamercolor{block title}{bg=blue!70!black, fg=white}
+\setbeamercolor{block body}{bg=blue!5!white}
+\setbeamercolor{alerted text}{fg=red!70!black}
+
+% ── Pacotes ───────────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+\usepackage{graphicx}
+
+% --- Traduções do pacote ---
+\renewcommand{\algorithmcfname}{Algoritmo}
+\SetKwInput{KwIn}{Entrada}
+\SetKwInput{KwOut}{Saída}
+\SetKwFor{Para}{para}{faça}{fim para}
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{então}{senão se}{senão}{fim se}
+
+% ── Configurações gerais ──────────────────────────────────────────────────────
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{background canvas}{}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=south east, xshift=-4pt, yshift=10pt]
+      at (current page.south east)
+      {\includegraphics[height=0.95cm]{/home/stenio/MEGA/Python/TCC/SIMPAT/Slides/Logo XV Simpat.png}};
+  \end{tikzpicture}%
+}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,center]{palette secondary}
+      \tiny Silva \textit{et al.}, UFPB -- 2026
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.5ex,dp=1ex,center]{palette primary}
+      \tiny XV Simpósio de Atuária (SIMPAT)
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.31\paperwidth,ht=2.5ex,dp=1ex,right]{palette secondary}
+      \tiny \insertframenumber{} / \inserttotalframenumber\hspace*{1em}
+    \end{beamercolorbox}
+  }
+}
+
+% ── Título ────────────────────────────────────────────────────────────────────
+\title{Impacto dos Critérios Mínimos para Seleção de Tábuas de Mortalidade sobre as Provisões Matemáticas dos RPPS}
+\author[Silva; Santos; Santos Jr.]{%
+  João Pedro S.\,F.\,da Silva \and
+  Yuri Martí Santana Santos \and
+  Luiz Carlos Santos Júnior}
+\institute[UFPB]{Universidade Federal da Paraíba}
+\date{XV SIMPAT, 25--27 de maio de 2026}
+
+% ══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Slide 1: Título ───────────────────────────────────────────────────────────
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ── Slide 2: Problema e Objetivo ──────────────────────────────────────────────
+\begin{frame}{Introdução}
+
+    \begin{itemize}
+        \item[] Regime Próprio de Previdência Social (RPPS)
+        \medskip
+        \item[] Portaria MTP nº 1.467/2022
+        \begin{itemize}
+            \item Art. 36
+        \end{itemize}
+    \end{itemize}
+
+    \begin{center}
+    \begin{minipage}{0.55\textwidth}
+        \begin{alertblock}{Hipótese}
+        \[
+            e_{\overline{X}}^{*} \geq e_{\overline{X}}^{r}
+            \Rightarrow
+            PM^{*} \geq PM^{r}
+        \]
+        \end{alertblock}
+    \end{minipage}
+    \end{center}
+    \medskip
+    \begin{itemize}
+    \item[] A PM é uma \textbf{função da estrutura completa} de probabilidades de sobrevivência, não apenas de um ponto:
+    \[ PM_i = f\!\left(\{_t p_x^{(i)}\}_{t \geq 0}\right) = VABF - VACF \]
+    \end{itemize}
+
+
+\end{frame}
+
+% ── Slide 3: Por que a hipótese pode falhar? ──────────────────────────────────
+\begin{frame}{Objetivo e justificativa}
+
+    \begin{itemize}
+        \item[] Objetivo:
+        \begin{itemize}
+            \item Verificar se alguma tábua comparativa resulta em uma PM inferior à tábua de referência, mesmo com expectativas de vida na idade média superior.
+        \end{itemize}
+        \medskip
+        \item[] Justificativa:
+        \begin{itemize}
+            \item Expectativa de vida média abstrai a dispersão temporal das probabilidades de sobrevivência
+            \item Rocha \textit{et al.} (2024).
+        \end{itemize}
+    \end{itemize}
+
+
+\end{frame}
+
+% ── Slide 4: Metodologia ──────────────────────────────────────────────────────
+\begin{frame}{Metodologia}
+  \begin{columns}[T]
+    % Coluna esquerda
+    \begin{column}{0.45\textwidth}
+
+      \vspace{1.5cm}
+      \begin{itemize}
+        \item[] Massas simuladas (100.000 indivíduos cada)
+        \begin{itemize}
+          \item Base jovem: idade média $\approx$ 33 anos
+          \item Base idosa: idade média $\approx$ 65 anos
+        \end{itemize}
+      \end{itemize}
+      \smallskip
+      \begin{itemize}
+        \item[] Cenário
+        \begin{itemize}
+          \item Ambiente unidecremental
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+
+    % Coluna direita — algoritmo como figura
+    \begin{column}{0.52\textwidth}
+      \begin{figure}
+        \centering
+        \scalebox{0.65}{%
+          \begin{minipage}{\linewidth}
+            \begin{algorithm}[H]
+              \caption{Seleção de tábuas}
+              \KwIn{Base de dados e conjunto de tábuas}
+              \KwOut{Conjunto de tábuas aprovadas}
+              Carregar base de dados\;
+              Calcula-se a idade média geral do grupo\;
+              A base é dividida em subconjuntos, um para cada gênero\;
+              \Para{cada gênero}{
+                Busca-se na tábua de referência (IBGE 2024) a expectativa de vida na idade média do grupo\;
+                \Para{cada tábua comparativa}{
+                  Busca-se a expectativa de vida na idade média do grupo\;
+                  \eSe{$e_x^{\text{comp}} \geq e_x^{\text{ref}}$}{
+                    Aprovar a tábua\;
+                  }{
+                    Descartar a tábua\;
+                  }
+                }
+              }
+            \end{algorithm}
+          \end{minipage}
+        }
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ── Slide 5: Resultados ───────────────────────────────────────────────────────
+\begin{frame}{Resultados}
+
+      \centering\textbf{Base jovem masculina (valores em milhões)}\\[2pt]
+      \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Tábua} & $VABF_{Ativo}$ & $VACF_{Ativo}$ & $VABF_{Inativo}$ & PM & $e_{33}$ \\
+        \midrule
+        IBGE 2024 Masc. Extra            & 58.1 & 23.3 & 10.7 & 45.5 & 43,55 \\
+        BR-EMSmt-v.2021 M Agra. 24\%     & 58.8 & 24.0 & 10.1 & 44.9 & 44,05 \\
+        M-95 H Suave 6\%                 & 58.5 & 23.9 & 10.0 & 43.9 & 43,95 \\
+        \bottomrule
+      \end{tabular}
+
+      \bigskip
+      \centering\textbf{Base jovem feminina (valores em milhões)}\\[2pt]
+      \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Tábua} & $VABF_{Ativo}$ & $VACF_{Ativo}$ & $VABF_{Inativo}$ & PM & $e_{33}$ \\
+        \midrule
+        IBGE 2024 Fem. Extrap.         & 88.7 & 35.3 & 13.4 & 66.9 & 48,70 \\
+        BR-EMSmt-v.2021 F Agra. 21,5\% & 88.6 & 35.3 & 13.5 & 66.5 & 48,83 \\
+        Petros Suav.\ 13\%             & 88.6 & 35.5 & 13.1 & 66.2 & 48,71 \\
+        \bottomrule
+      \end{tabular}
+\end{frame}
+
+\begin{frame}{Resultados}
+
+      \centering\textbf{Base idosa masculina (valores em milhões)}\\[2pt]
+      \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Tábua} & $VABF_{Ativo}$ & $VACF_{Ativo}$ & $VABF_{Inativo}$ & PM & $e_{65}$ \\
+        \midrule
+        IBGE 2024 Masc. Extra    & 78.8 & 6.7 & 119.4 & 191.4 & 17,21 \\
+        TR 2025                  & 80.2 & 6.9 & 117.9 & 191.2 & 17,48 \\
+        \bottomrule
+      \end{tabular}
+
+      \bigskip
+      \centering\textbf{Base idosa feminina (valores em milhões)}\\[2pt]
+      \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Tábua} & $VABF_{Ativo}$ & $VACF_{Ativo}$ & $VABF_{Inativo}$ & PM & $e_{65}$ \\
+        \midrule
+        IBGE 2024 Fem. Extra.   & 78.8 & 6.7 & 119.4 & 238.7 & 20,07 \\
+        M-95 M Suav.\ 7\%       & 80.2 & 6.9 & 117.9 & 238.2 & 20,08 \\
+        \bottomrule
+      \end{tabular}
+
+
+\end{frame}
+
+% ── Slide 6: Conclusões ───────────────────────────────────────────────────────
+\begin{frame}{Conclusões e Limitações}
+
+  \begin{itemize}
+    \item[] Conclusões 
+    \begin{enumerate}
+      \item O critério do Art.\,36 pode não ser suficiente.
+
+      \medskip
+      \item Estruturas etárias jovens, em especial a do sexo masculino, podem estar mais suscetíveis a essas tábuas.
+
+      \medskip
+      \item Fatores de suavização e agravamento.
+    \end{enumerate}
+    \medskip
+    \item[] Limitações
+    \begin{itemize}
+      \item Uso exclusivo de dados simulados
+      \medskip
+      \item Simplificação do cenário proposto
+    \end{itemize} 
+
+  \end{itemize}
+
+\end{frame}
+
+% ── Slide 7: Obrigado ─────────────────────────────────────────────────────────
+\begin{frame}[plain]
+  \begin{center}
+    \vspace{1.5cm}
+    {\Large \textbf{Obrigado!}}
+
+
+    \bigskip\bigskip
+    \begin{tabular}{rl}
+      João Pedro S.\,F.\,da Silva & \texttt{jpsfs2@academico.ufpb.br} \\
+      Yuri Martí Santana Santos   & \texttt{yuri.marti@academico.ufpb.br} \\
+      Luiz Carlos Santos Júnior   & \texttt{lcsj@academico.ufpb.br} \\
+    \end{tabular}
+
+    \bigskip
+    {\small Universidade Federal da Paraíba\\
+            XV Simpósio de Atuária -- SIMPAT 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

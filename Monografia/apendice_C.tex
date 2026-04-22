@@ -1,0 +1,102 @@
+\newpage
+\phantomsection 
+\addcontentsline{toc}{chapter}{APÊNDICE C - TÁBUAS DE MORTALIDADE E CÓDIGOS}
+\begin{center}
+    APÊNDICE C - TÁBUAS DE MORTALIDADE E CÓDIGOS
+\end{center}
+\renewcommand{\thechapter}{Apêndice C}
+\refstepcounter{chapter}
+\label{apendice_C}
+\counterwithin{equation}{chapter}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{C.\arabic{equation}}
+
+Todos os códigos elaborados para execução deste trabalho podem ser encontrados no repositório GitHub: \url{https://github.com/st3nd1/TCC}.
+
+Todas as tábuas de mortalidade usadas para o cálculo da PM nesse estudo podem ser encontradas na Tabela \ref{tab:tabuas_utilizadas}. Com exceção das tábuas TR-2025 \cite{ssa_actuarial_life_table}, Petros \cite{soa_petros_2822}, M-95 H \cite{soa_m95h_23001}, M-95 F \cite{soa_m95m_23002}, todas as tábuas podem ser encontradas no endereço eletronico: \url{https://atuarios.org.br/tabuas-biometricas/} \cite{iba_tabuas_biometricas}.
+
+\begin{singlespace}
+\begin{longtable}{clcl}
+\caption{Tábuas de Mortalidade Masculinas e Femininas Utilizadas nas Provisões Matemáticas}
+\label{tab:tabuas_utilizadas} \\
+\toprule
+\multicolumn{1}{c}{\textbf{N°}} & \multicolumn{1}{c}{\textbf{Tábua Masculina}} & \multicolumn{1}{c}{\textbf{N°}} & \multicolumn{1}{c}{\textbf{Tábua Feminina}} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}{\small\textit{(continuação)}} \\
+\toprule
+\multicolumn{1}{c}{\textbf{N°}} & \multicolumn{1}{c}{\textbf{Tábua Masculina}} & \multicolumn{1}{c}{\textbf{N°}} & \multicolumn{1}{c}{\textbf{Tábua Feminina}} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\textit{(continua)}} \\
+\endfoot
+\bottomrule
+\multicolumn{4}{l}{\small Fonte: Elaboração própria (2026).} \\
+\endlastfoot
+1  & IBGE 2024 Extrap M                & 1  & IBGE 2024 F Extrap \\
+2  & IBGE 2023 M                       & 2  & IBGE 2023 F \\
+3  & IBGE 2023 Extrap M                & 3  & IBGE 2023 A \\
+4  & IBGE 2022 M                       & 4  & IBGE 2020 Extrap. F \\
+5  & IBGE 2022 Extrap M                & 5  & IBGE 2019 Extrap. Ambos \\
+6  & IBGE 2022 Extrap M Suav 7,5\%    & 6  & IBGE 2019 Extrap. Ambos Suave 19\% \\
+7  & IBGE 2021 M                       & 7  & IBGE 2019 Extrap. F \\
+8  & IBGE 2021 Extrap M                & 8  & IBGE 2018 Extrap. A \\
+9  & IBGE 2021 Extrap M Suav 1\%      & 9  & IBGE 2018 Extrap. F \\
+10 & IBGE 2020 Extrap. M               & 10 & AT-2000 (Suav 10\%) F \\
+11 & IBGE 2019 Extrap. A               & 11 & AT-2000 F \\
+12 & IBGE 2019 Extrap. A Agrav 19\%   & 12 & AT-49 F \\
+13 & IBGE 2019 Extrap. A Agrav 18,3\% & 13 & AT-50 \\
+14 & IBGE 2019 Extrap. M               & 14 & AT-55 \\
+15 & IBGE 2018 Extrap. A               & 15 & AT-83 Basic F \\
+16 & IBGE 2018 Extrap. M               & 16 & AT-83 IAM F \\
+17 & IBGE 2018 Extrap. M Suave 2,5\%  & 17 & BR-EMSmt-v.2021 F \\
+18 & AT-2000 (Suav 10\%) M            & 18 & BR-EMSmt-v.2021 F Agrav. 21,5\% \\
+19 & AT-2000 M                         & 19 & BR-EMSsb-v.2021 F \\
+20 & AT-2000 M Agrav. 33\%            & 20 & BREMSmt 2015 F \\
+21 & AT-49 M                           & 21 & BREMSsb 2015 F \\
+22 & AT-50                             & 22 & CDG-60 \\
+23 & AT-55                             & 23 & GAM-71 F \\
+24 & AT-55 Suave 5\%                  & 24 & GAM-71 F Suav 5\% \\
+25 & AT-83 Basic M                     & 25 & GAM-71 F Suav 7,5\% \\
+26 & AT-83 Basic M Suave 2,5\%        & 26 & GAM-71 F Suav 10\% \\
+27 & AT-83 IAM M                       & 27 & CSO80 \\
+28 & BR-EMSmt-v.2021 M                & 28 & GKF-95 \\
+29 & BR-EMSmt-v.2021 M Agrav 10\%    & 29 & GR-95 F \\
+30 & BR-EMSmt-v.2021 M Agrav 15\%    & 30 & Prudential-50 \\
+31 & BR-EMSmt-v.2021 M Agrav 20\%    & 31 & AMERICAN EXPERIENCE \\
+32 & BR-EMSmt-v.2021 M Agrav 24\%    & 32 & RP-2000 F \\
+33 & BR-EMSmt 2015 M                  & 33 & SGB-51 \\
+34 & BR-EMSmt 2015 M Agrav 20\%      & 34 & SGB-75 \\
+35 & BR-EMSmt 2015 M Agrav 25\%      & 35 & Rentiers Francais \\
+36 & BREMSsb 2015 M                   & 36 & UP - 94 F \\
+37 & CDG-60                            & 37 & USTP - 61 \\
+38 & GAM-71 M                          & 38 & 2012 AIM table F \\
+39 & CSO80                             & 39 & CL5 \\
+40 & GKM-70                            & 40 & CL6 \\
+41 & GKM-95                            & 41 & Hunter Semitropical \\
+42 & GR-95 M                           & 42 & Grupal Americana \\
+43 & Prudential-50                     & 43 & TR 2025 \\
+44 & Prudential-50 Suav. 16\%         & 44 & Petros \\
+45 & Prudential-50 Suav. 17\%         & 45 & Petros Suavizada 5\% \\
+46 & Prudential-50 Suav. 18\%         & 46 & Petros Suavizada 7,5\% \\
+47 & Prudential-50 Suav. 19\%         & 47 & Petros Suavizada 10\% \\
+48 & Prudential-50 Suav. 19,5\%       & 48 & Petros Suavizada 13\% \\
+49 & Prudential-50 Suav. 20\%         & 49 & Petros Suavizada 15\% \\
+50 & AMERICAN EXPERIENCE              & 50 & Petros Suavizada 17\% \\
+51 & RP-2000 M                         & 51 & M-95 M \\
+52 & SGB-75                            & 52 & M-95 M Suav. 2\% \\
+53 & Rentiers Francais                 & 53 & M-95 M Suav. 3\% \\
+54 & UP - 94 M                         & 54 & M-95 M Suav. 5\% \\
+55 & USTP - 61                         & 55 & M-95 M Suav. 7\% \\
+56 & 2012 AIM table M                 & 56 & M-95 M Agravada 10\% \\
+57 & CL5                               & & \\
+58 & CL6                               & & \\
+59 & Hunter Semitropical               & & \\
+60 & Grupal Americana                  & & \\
+61 & TR 2025                           & & \\
+62 & Petros                            & & \\
+63 & M-95 H                            & & \\
+64 & M-95 H Suave 6\%                 & & \\
+\end{longtable}
+\end{singlespace}

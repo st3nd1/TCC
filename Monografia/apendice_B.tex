@@ -1,0 +1,126 @@
+\newpage
+
+% 1. Cria a âncora para o link do sumário funcionar corretamente
+\phantomsection 
+
+% 2. Adiciona ao sumário (agora o link apontará para cá)
+\addcontentsline{toc}{chapter}{APÊNDICE B - DERIVAÇÃO DA FUNÇÃO DE SOBREVIVÊNCIA E DA EXPECTATIVA DE VIDA}
+
+% 3. Título centralizado
+\begin{center}
+    APÊNDICE B - DERIVAÇÃO DA FUNÇÃO DE SOBREVIVÊNCIA E DA EXPECTATIVA DE VIDA
+\end{center}
+
+% 4. Faz o label 'pegar' o valor A e não o número do capítulo anterior
+\renewcommand{\thechapter}{Apêndice B}  % atualiza ANTES de capturar
+\refstepcounter{chapter}
+\label{apendice_B}
+
+% 5. Configuração das equações
+\counterwithin{equation}{chapter}
+\setcounter{equation}{0}
+\renewcommand{\theequation}{B.\arabic{equation}}
+
+
+É possível escrever a probabilidade de sobrevivência entre as idades $x$ e $x+1$ em função apenas da força de mortalidade. O primeiro passo é escrever \ref{eq:fx} em termos de \ref{eq:Sx}.
+\begin{equation}
+    f_x(t)=\frac{d}{dt}F_x(t)=\frac{d}{dt}[1-S_x(t)]=-\frac{d}{dt}S_x(t)
+    \label{eq:A-fx_Sx}
+\end{equation}
+Logo, ao substituir \ref{eq:A-fx_Sx} em \ref{eq:mux}, temos apenas força de mortalidade e função de sobrevivência na equação, como mostra \ref{eq:A-muxsx}:
+\begin{equation}
+    \mu_{x+t} = \frac{-\frac{d}{dt}S_x(t)}{S_x(t)}=\frac{1}{S_x(t)}\cdot\frac{d}{dt}S_x(t)
+    \label{eq:A-muxsx}
+\end{equation}
+Pela regra da cadeia, pode-se rescrever \ref{eq:A-muxsx} de outra forma, como mostra a equação \ref{eq:A-muxsx2}.
+\begin{equation}
+    \mu_{x+t} = -\frac{d}{dt}lnS_x(t)
+    \label{eq:A-muxsx2}
+\end{equation}
+Integrando ambos os lados da equação \ref{eq:A-muxsx2} em relação a $t$, obtem-se:
+\begin{equation}
+    \int_0^s\mu_{x+t}dt=-\int_0^s\frac{d}{dt}ln(S_x(t))dt
+    \label{eq:A-intmu1}
+\end{equation}
+\begin{equation}
+    \int_0^s\mu_{x+t}dt=-[ln(S_x(s))-ln(S_x(0))]
+    \label{eq:A-intmu2}
+\end{equation}
+A função de sobrevivência no tempo  $t=0$ é 1, isto é, a probabilidade de uma pessoa de idade $x$ viver $0$ anos é $100\%$. Portando, ao aplicar essa propriedade em \ref{eq:A-intmu2}, temos o $ln(1)=0$, o que resulta na equação \ref{eq:A-intmu3}.
+\begin{equation}
+    \int_0^s\mu_{x+t}dt=-ln(S_x(s))
+    \label{eq:A-intmu3}
+\end{equation}
+Aplicando exponencial de ambos os lados da equação \ref{eq:A-intmu3} e reindexando, obtêm-se a função de sobrevivência em termos da força de mortalidade, como mostra \ref{eq:A-sxmu}.
+\begin{equation}
+    {}_tp_x=S_x(t)=e^{-\int_0^t\mu_{x+u}du} 
+    \label{eq:A-sxmu}
+\end{equation}
+
+A partir da definição de uma esperença matemática de um V.A., obtém-se a formula para a expectativa de vida, como mostra a equação \ref{eq:exdifini} \cite{bowers2006}.
+\begin{equation}
+    e_x^0=\int_0^\infty t \cdot  f_x(t)dt = \int_0^\infty t \cdot {}_{t}p_x \cdot \mu_{x+t} dt 
+    \label{eq:exdifini}
+\end{equation}
+
+Ao derivar a equação \ref{eq:A-sxmu} é possível encontrar um termo semelhante a função densidade $f_x(t) = {}_{t}p_x \cdot \mu_{x+t}$ da equação \ref{eq:exdifini}. Para derivar a equação \ref{eq:A-sxmu}, aplica-se a regra da cadeia. Primeiro, tomando o logaritmo natural em ambos os lados da equação:
+\begin{equation}
+    {}_tp_x=e^{-\int_0^t\mu_{x+u}du}
+\end{equation}
+\begin{equation}
+    ln({}_tp_x)=-\int_0^t\mu_{x+u}du
+\end{equation}
+\begin{equation}
+    \frac{d}{dt}ln({}_tp_x)=-\int_0^t\mu_{x+u}du
+    \label{eq:ddt}
+\end{equation}
+
+O teorema fundamental do cálculo estabelece que, se $f$ for contínua em um intervalo e definimos $F(t) = \int_{a}^{t}f(u)du$, então $F'=f(t)$. Ou seja, a derivada de uma integral em relação ao limite superior é o valor do integrando naquele limite. Portanto, o lado direito da equação \ref{eq:ddt} torna-se:
+\begin{equation}
+    G(t) = \int_0^t\mu_{x+u}du
+\end{equation}
+\begin{equation}
+    G'(t) = \mu_{x+t}
+\end{equation}
+Logo,
+\begin{equation}
+    \frac{d}{dt} \left(-\int_0^t\mu_{x+u}du\right) = -G'(t) = -\mu_{x+t}
+    \label{eq:mufinal}
+\end{equation}
+
+Para o lado esquerdo da equação \ref{eq:ddt}, usando efetivamente a regra da cadeia, obtem-se a equação \ref{eq:ddtpx}:
+\begin{equation}
+    \frac{d}{dt}ln({}_tp_x) = \frac{1}{{}_tp_x} \cdot \frac{d}{dt}({}_tp_x)
+    \label{eq:ddtpx}
+\end{equation}
+Subustituindo os resultados obtidos em \ref{eq:mufinal} e \ref{eq:ddtpx} na equação \ref{eq:ddt}:
+\begin{equation}
+    \frac{1}{{}_tp_x} \cdot \frac{d}{dt}({}_tp_x) = -\mu_{x+t}
+    \label{eq:pxfinales}
+\end{equation}
+Multiplicando ambos os lados por $-{}_{t}p_{x}$
+\begin{equation}
+    -\frac{d}{dt}({}_tp_x) = {}_tp_x \cdot \mu_{x+t}
+    \label{eq:finales}
+\end{equation}
+
+Dessa forma, com a expressão obtida equação \ref{eq:finales} é possível reescrever a equação \ref{eq:exdifini} da seguinte forma:
+\begin{equation}
+    e_{x}^{0} = \int_{0}^{\infty} t \cdot \left( -\frac{d}{dt}({}_tp_x) \right)dt = -\int_{0}^{\infty} t \cdot \left(\frac{d}{dt}({}_tp_x) \right)dt
+    \label{finales3}
+\end{equation}
+
+Para resolver \ref{finales3} é necessário usar o método de integração por partes. Seja $u=t$ e $dv=\left(\frac{d}{dt}({}_tp_x) \right)$, então:
+\begin{equation}
+    e_{x}^{0} = -\int_{0}^{\infty} t \cdot \left(\frac{d}{dt}({}_tp_x) \right)dt = -\left(\left[t \cdot {}_{t}p_x \right]_{0}^{\infty} - \int_0^{\infty} {}_{t}p_xdt\right)
+\end{equation}
+\begin{equation}
+    e_{x}^{0} = -\left[t \cdot {}_{t}p_x \right]_{0}^{\infty} + \int_0^{\infty} {}_{t}p_x dt
+\end{equation}
+
+Em $t=0$, tem-se que $t\cdot {}_{t}p_x = 0 \cdot {}_{0}p_x = 0$. Em $t \to \infty$ é necessário analisar o que acontece com $t \cdot {}_{t}p_x$ quando $t$ tende ao infinito. Ou seja, avaliar $lim_{t \to \infty} t \cdot {}_{t}p_x$. Dado que ${}_{t}p_x$ é uma probabilidade de sobrevivência, esse produto tende a 0, devido a propriedade das probabilidades de sobrevivência \cite{dickson2019}. Portanto, $e_x^{0}$ se torna apenas:
+
+\begin{equation}
+    e_{x}^{0} = \int_0^{\infty} {}_{t}p_x dt
+    \label{eq:exfinal100}
+\end{equation}

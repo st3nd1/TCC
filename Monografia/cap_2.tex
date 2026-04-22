@@ -1,0 +1,293 @@
+\chapter{\textbf{REFERENCIAL TEÓRICO}}
+Este capítulo apresenta o referencial teórico do presente trabalho, um mapeamento acerca do que outros estudos investigaram quanto ao proposto pela corrente pesquisa: o impacto que a aplicação dos critérios mínimos para seleção de tábuas de mortalidade exerce sobre as provisões matemáticas. Adicionalmente, o capítulo destaca as lacunas a serem preenchidas, principalmente a ausência de estudos que validem a consistência técnica deste critério legal e quantifiquem seu potencial impacto financeiro, especialmente em cenários com distribuições etárias assimétricas. Para contextualizar a análise, são abordadas questões referentes à sustentabilidade, regulamentação, cálculo atuarial e financiamento no âmbito dos RPPS.
+
+\section{\textbf{Sustentabilidade e regulamentação dos regimes próprios}}
+O desenvolvimento sustentável do RPPS é proveniente de uma gestão coerente dos recursos, transparência e mitigação dos riscos. Sendo assim, essa sustentabilidade é instaurada como um desafio urgente para a administração pública brasileira \cite{puchalski2022}.
+
+Para \citeonline{puchalski2022} e \citeonline{nogueira2012equilibrio}, existem diversos fatores que se destacaram na formação do desequilíbrio dos regimes de previdência dos servidores públicos. Dentre eles, houve uma expansão exponencial da criação desses regimes, sem que fossem estabelecidas as regras para a instituição. Vários regimes próprios foram instituídos como uma tentativa de aliviar temporariamente os gastos públicos, porém, sem mecanismos eficazes de controle das contribuições. Isso resultou em situações de inadimplência junto aos fundos destinados aos servidores públicos.
+
+A compreensão do que são o equilíbrio financeiro e o equilíbrio atuarial foi estabelecida na Emenda Constitucional nº 20/1998. Esse entendimento é exposto no Art. nº 40 da Constituição Federal, ao propagar que o regime de previdência dos servidores públicos deverá observar critérios que preservem o equilíbrio financeiro e atuarial, sendo esses os princípios básicos que guiam a existência desses regimes \cite{puchalski2022, nogueira2012equilibrio}.
+
+Entretanto, foi somente com a Lei nº 9.717, de 27 de novembro de 1998, que a definição se tornou mais específica, estabelecendo normas gerais de contabilidade e atuária como parâmetros a serem examinados para a organização dos regimes próprios, com o objetivo de assegurar o equilíbrio financeiro e atuarial. A partir do Decreto nº 3.788/2001, esses critérios passaram a ser exigidos nos regimes próprios, para que pudessem comprovar a regularidade de seus RPPS perante a Secretaria de Previdência Social e, assim, obter o Certificado de Regularidade Previdenciária (CRP) \cite{puchalski2022}.
+
+A Portaria MTP Nº 1.467, de 2 de junho de 2022, surge em um contexto de desequilíbrio atuarial, com o objetivo de estabelecer um marco regulatório robusto para os RPPS da União, dos Estados, do Distrito Federal e dos Municípios. A Portaria define diretrizes essenciais para a organização e operação desses regimes, abordando diversos aspectos das avaliações atuariais \cite{silva2024sustentabilidade}. Ela estabelece em sua seção VI, entre outros, parâmetros mínimos de prudência para a escolha das hipóteses atuariais, buscando garantir a sustentabilidade e a eficiência financeira dos RPPS.
+
+O foco do presente trabalho se restringe ao Art. 36, inciso I, da referida Portaria. O texto normativo estabelece os critérios para a utilização de tábuas biométricas a serem utilizadas nos cálculos atuariais. Além das alíneas 'a' e 'b', citadas no primeiro capítulo, a norma estabelece em seu parágrafo único que a o RPPS poderá utilizar tábuas biométricas elaboradas a partir da experiência da massa segurada, desde que atendidos os limites minímos deste mesmo artigo.
+
+Ao estabelecer um \textit{benchmark} mínimo de longevidade, busca-se mitigar o risco de que os RPPS utilizem tábuas de mortalidade que subestimem a sobrevida dos seus participantes e, consequentemente, levem a uma subestimação do passivo atuarial. A tábua de mortalidade do IBGE, por representar a população geral, é posicionada como um limite de segurança.
+
+\section{\textbf{Cálculo atuarial em sistemas previdenciários}}
+
+Para entidades que geram passivos de longo prazo, como os RPPS, um aspecto relevante é a incerteza sobre quanto tempo as pessoas vão viver. O risco de longevidade representa a sobrevivência das pessoas a mais do esperado. A natureza persistente e sistemática do risco de longevidade, em particular, exige que os entes busquem formas robustas de sustentabilidade \cite{bravo2007}.
+
+O cálculo atuarial nos RPPS fundamenta-se na aplicação de técnicas biométricas e financeiras para lidar com o risco de longevidade e assim estimar as contribuições devidas pelos participantes e os benefícios a serem pagos pela entidade gestora \cite{lopes2010impacto}. Conforme explicam \citeonline{rodrigues2012risco} e \citeonline{correa2020premissas}, essa metodologia combina o uso de tábuas de mortalidade com técnicas de desconto financeiro para projetar os fluxos de caixa previdenciários ao longo do tempo.
+
+Neste sentido, este tópico apresenta informações sobre as técnicas financeiras, com base em funções de desconto de um ou mais pagamentos, bem como sobre as técnicas biométricas, a partir das tábuas de mortalidade, e as obrigações da entidade gestora relacionadas à formação das provisões matemáticas.
+
+\subsection{Desconto de um ou mais pagamentos}
+
+Todo e qualquer contrato que lide com conceitos financeiros exige considerar o valor do dinheiro no tempo. A matemática financeira mostra que é possível realizar tal avaliação através da taxa de juros. Portanto, através da equação \ref{eq:v}, é possível obter o valor presente de alguma quantia monetária futura \cite{rodrigues2012risco}.
+
+\begin{equation}
+    v = \left(\frac{1}{1+i}\right)^{n}
+    \label{eq:v}
+\end{equation}
+
+\noindent Em que $i$ representa a taxa de juros e $n$ o prazo associado à quantia monetária futura. Uma renda é uma série de pagamentos e podem ser certas ou aleatórias. As rendas certas são tratadas pelas matemática financeira. Já as rendas aleatórias, são o foco na matemática atuarial \cite{cordeiro2014calculo, vilanoca1969}.
+
+Na renda certa, a duração e o fluxo de pagamentos são determinados por um prazo fixo, independentemente de quem está recebendo ou pagando estar vivo ou não, como mostra a equação \ref{eq:an} \cite{rodrigues2012risco}.
+
+\begin{equation}
+    \ddot{a}_{n} = \sum_{t=0}^{n} \left(\frac{1}{1+i}\right)^{t}
+    \label{eq:an}
+\end{equation}
+
+Já nas rendas aleatórias, os pagamentos estão diretamente vinculados à vida futura de um participante de idade $x$. Ou seja, os valores só serão pagos enquanto a pessoa estiver viva, de acordo com a equação \ref{eq:ax} \cite{bowers2006}.
+
+\begin{equation}
+    \ddot{a}_{x} = \sum_{t=0}^{\infty} \left(\frac{1}{1+i}\right)^t \cdot {}_{t}p_{x}
+    \label{eq:ax}
+\end{equation}
+
+Portanto, a principal diferença entre essas duas rendas está na duração do pagamento: na renda certa, a duração é predeterminada por um prazo fixo, cessando os pagamentos ao final desse período, independentemente das circunstâncias. Já na renda aleatória, a duração é incerta, pois está condicionada à sobrevivência de uma ou mais pessoas. Os pagamentos, neste caso, persistem enquanto o indivíduo estiver vivo, podendo se estender por toda a sua vida ou por um período pré-definido, desde que a condição de sobrevivência seja atendida \cite{vilanoca1969}.
+
+\subsection{Tábuas de mortalidade}
+
+A tábua de mortalidade descreve o padrão de mortalidade observado em uma população específica. Em sua forma clássica demográfica, ela se dispõe como uma tabela que possui informações sobre como uma coorte de nascimentos vai, ao longo do tempo, extinguindo-se. Uma de suas colunas é dedicada à idade. As demais colunas são preenchidas com funções relacionadas à mortalidade, específicas para cada idade \cite{preston2001demography}. 
+
+A visão da ciência atuarial dessa ferramenta não se obstem muito desta que foi apresentada. De acordo com \citeonline{cordeiro2014calculo}, uma tábua de mortalidade é um recurso que permite entender a mortalidade de um determinado grupo. É, dessa forma, um instrumento estatístico com o objetivo de mensurar, por idade, probabilidades referentes à vida e morte das pessoas. Para cada idade, nestes casos, são apresentadas as quantidades de falecimentos, a taxa de mortalidade específica, a probabilidade de falecimentos, a probabilidade de sobrevivência e a esperança de vida. Como explica \citeonline{paes2018}, a tábua de mortalidade possui grande relevância prática para as ciências atuariais, uma vez que essa área utiliza as probabilidades nela contidas para a realização de cálculos nos setores de seguros e previdência.
+
+\subsubsection{\textit{Tempo residual de vida e funções biométricas decorrentes}}
+
+Nos cálculos atuariais do ramo vida representamos a variável aleatória (V.A.) contínua "tempo futuro de vida"{} pela notação $T_x$ \cite{bowers2006, dickson2019, macdonald2018}. Atuários se utilizam dessa variável como base para o desenvolvimento de tábuas de mortalidade, de forma que possam avaliar a mortalidade e a longevidade de um grupo, devido a esses serem parâmetros essenciais para os cálculos de benefícios no ramo vida \cite{dickson2019,promislow2015}.
+
+Seja $F_x(t)$ a função de distribuição acumulada associada a V.A. tempo futuro de vida ($T_x$), conforme expressa a equação \ref{eq:Fx}. Assim, $F_x(t)$ representa a probabilidade de que uma pessoa de idade exata $x$ morra em até $t$ anos.
+
+\begin{equation}
+    F_x (t)= P(T_x \leq t), \quad \forall x > 0
+    \label{eq:Fx}
+\end{equation}
+
+A função de densidade $f_x(t)$ é obtida através da derivação de $F_x(t)$, como mostra \ref{eq:fx}. Essa função descreve a probabilidade de uma pessoa falecer em um instante $t$.
+
+\begin{equation}
+    f_x (t)= \frac{d}{dt}[F_x(t)], \quad \forall x > 0
+    \label{eq:fx}
+\end{equation}
+
+Por vezes, atuários estão interessados em entender a probabilidade de que uma pessoa com idade exata $x$ sobreviva por pelo menos $t$ anos. Essa probabilidade é denominada como função de sobrevivência $S_x(t)$, expressada em \ref{eq:Sx}.
+
+\begin{equation}
+    S_x (t)= P(T_x>t)=1-F_x(t), \quad \forall x > 0
+    \label{eq:Sx}
+\end{equation}
+
+Como explicam \citeonline{macdonald2018}, a notação atuarial internacional utiliza as funções $S_x(t)$ e $F_x(t)$ para representar, respectivamente, as funções biométricas ${}_tp_x$ e ${}_tq_x$, que indicam a probabilidade de sobrevivência e de morte entre as idades $x$ e $x + t$, como mostram as equações \ref{eq:sxpx} e \ref{eq:fxqx}.
+\begin{equation}
+    S_x(t) = {}_tp_x
+    \label{eq:sxpx}
+\end{equation}
+\begin{equation}
+    F_x(t) = {}_tq_x
+    \label{eq:fxqx}
+\end{equation}
+
+As equações expostas em \ref{eq:sxpx} e \ref{eq:fxqx} possuem uma relação. Como são eventos complementares, a soma de suas probabilidades devem "cobrir" \hspace{0.025cm} todos os eventos possíveis \cite{dickson2019}, como mostra a equação \ref{eq:1pq}.
+\begin{equation}
+    p_x+q_x=1
+    \label{eq:1pq}
+\end{equation}
+
+De acordo com \citeonline{dickson2019}, qualquer função de sobrevivência para a distribuição do tempo futuro de vida deve satisfazer as seguintes condições para ser válida: a probabilidade para um indivíduo de idade $x$ sobreviver 0 ano é 100\%; e para $t \to \infty$, todos indivíduos eventualmente irão morrer.
+
+Além dessas, \citeonline{garcEsimoes2010} explicam que existe mais uma condição a ser satisfeita: a função é decrescente, ou seja, a primeira derivada da função de sobrevivência é negativa.
+
+A força de mortalidade é uma função que oferece uma compreensão numérica acerca do risco de uma pessoa falecer em um curto intervalo de tempo. Especificamente, para intervalos infinitesimais de $\Delta x$. Denotada por $\mu_x$, é uma peça chave na modelagem atuarial, especialmente ao considerar o risco de mortalidade para uma pessoa viva na idade $x$ \cite{dickson2019, macdonald2018}. Essa função pode ser expressa a partir de uma relação com as equações \ref{eq:fx}  e \ref{eq:Sx}, como mostra \ref{eq:mux}.
+
+\begin{equation}
+    \mu_{x+t} = \frac{f_x(t)}{S_x(t)}
+    \label{eq:mux}
+\end{equation}
+
+Existem outras duas funções biométricas básicas em uma tábua de mortalidade. São elas: o número de sobreviventes à idade $x$ e o o número de mortos entre as idades $x$ e $x+1$, denotadas por $l_x$ e $d_x$ respectivamente \cite{bowers2006}. Podemos encontrar essa duas funções utilizando a função de sobrevivência (equação \ref{eq:sxpx}) em termos apenas da força de mortalidade, como mostra  a equação \ref{eq:sxmu} e demonstrado no apêndice (equação \ref{eq:A-sxmu}).
+\begin{equation}
+    {}_tp_x=S_x(t)=e^{-\int_0^t\mu_{x+u}du} 
+    \label{eq:sxmu}
+\end{equation}
+
+Em mãos de \ref{eq:sxmu}, é possível encontrar a função biométrica $l_x$, conforme \ref{eq:lx}. Para a determinação da coorte hipotética, escolhe-se um número arbitrário para $l_0$ (o número de pessoas vivas à idade exata 0), por exemplo, $100.000$, o que permite calcular, a partir da equação \ref{eq:lx}, o número de vivos para todas as idades. Conhecer o vetor $l_x$ viabiliza o cálculo da função biométrica $d_x$, representado pela expressão \ref{eq:dx} \cite{bowers2006, macdonald2018}. Existem outras formas de se obter os valores de $l_x$ e $d_x$, como as expostas em \citeonline{dickson2019} e \citeonline{promislow2015}, por exemplo.
+\begin{equation}
+    l_x=l_0\cdot S_x(t)=l_0 \cdot e^{-\int_0^t\mu_{x+u}du}
+    \label{eq:lx}
+\end{equation}
+\begin{equation}
+    {}_td_x=l_x-l_{x+t}
+    \label{eq:dx}
+\end{equation}
+
+Existe uma função biométrica na tábua de mortalidade que informa o valor esperado da V.A. $T_x$, isto é, $E[T_x]$. A notação atuarial para essa função é $e_x^0$, usualmente chamada de expectativa de vida abreviada à idade $x$. A ideia fundamental é que a expectativa de vida é o tempo médio residual de vida \cite{promislow2015}. Como mostra o detalhamento no \ref{apendice_B}, é possível obter o valor de $e_x^0$ a partir da definição da esperança matemática de uma variável aleatória.
+
+\begin{equation}
+    e_x^0=E[T_x]=\int_0^\infty {}_tp_xdt
+    \label{eq:ex}
+\end{equation}
+
+Embora a idade seja o principal fator, não é o único parâmetro que determina a mortalidade de uma pessoa. Fatores como gênero, estado de saúde, estilo de vida e localização geográfica também afetam a expectativa de vida. Selecionar a tábua de mortalidade apropriada para cada situação é uma tarefa crucial para um atuário \cite{promislow2015}.
+
+\subsubsection{\textit{Classificação das tábuas de mortalidade}}
+
+Na visão de \citeonline{bravo2007}, as tábuas de mortalidade constituem uma representação estatística do comportamento da mortalidade em uma determinada população, e a forma como são construídas ou o que elas representam define seus tipos. Elas podem ser classificadas, quanto ao tempo de observação da mortalidade, em tábuas contemporâneas e tábuas geracionais \cite{bravo2007, ortega1987}.
+
+As tábuas contemporâneas baseiam-se na análise de uma população em um dado período, considerando as condições de mortalidade observadas naquele momento. Trata-se da aplicação das taxas de mortalidade registradas nesse intervalo temporal a uma população hipotética, usualmente composta por 100.000 indivíduos \cite{bravo2007, ortega1987}.
+
+As tábuas geracionais, ao contrário das contemporâneas, nos permitem acompanhar um grupo de pessoas desde o seu nascimento até a morte. Estas tábuas calculam as taxas de mortalidade para a mesma geração, acompanhando a vida dos indivíduos ao longo do tempo \cite{bravo2007, ortega1987}.
+
+Além dessas duas categorias, as tábuas também podem ser classificadas de acordo com a variação da mortalidade observada ao longo do tempo. Sob esse critério, existem as tábuas estáticas e as tábuas dinâmicas. A primeira é considerada mais simples; todas as funções de mortalidade se referem apenas à idade $x$. Elas não incorporam uma dimensão de tempo cronológico futuro. Por sua vez, a segunda classificação é mais complexa e bidimensional. Essa tábuas levam em conta não só a idade, mas também o ano de calendário (tempo cronológico). Isso permite que elas projetem a mortalidade no futuro, considerando que as taxas de morte podem mudar ao longo do tempo. São essenciais para prever como a mortalidade evoluirá \cite{bravo2007}.
+
+Segundo \citeonline{paes2018}, as tábuas de mortalidade também podem ser classificadas em tábuas completas e tábuas abreviadas. As primeiras trabalham com a idade anual dos indivíduos, enquanto as segundas utilizam faixas etárias agregadas de cinco em cinco anos, com exceção dos grupos de 0 a 1 e de 1 a 4 anos, bem como do último intervalo, que é aberto (por exemplo, 80 anos ou mais).
+
+\subsection{Provisões matemáticas}
+A provisão matemática (PM) é utilizada pela matemática atuarial para ir de encontro ao equilíbrio atuarial. Nesse contexto, é a quantidade monetária que o ente deve ter no tempo $t$ para arcar com suas obrigações futuras \cite{cordeiro2014calculo, vilanoca1969}.
+
+Denominada por ${}_tV$, para obter tal mensuração, existem duas metodologias principais, chamadas de métodos prospectivo e retrospectivo \cite{cordeiro2014calculo, vilanoca1969, dickson2019}. Para o método prospectivo, o ente calcula a reserva olhando para todas as obrigações e recebimentos futuros relacionados aquele grupo de segurados, como mostra \ref{eq:vtp}. Já o método retrospectivo, por sua vez, faz o inverso. Isto é, leva em consideração os prêmios que já foram pagos e os compromissos que o ente já teve até o momento da avaliação, como mostra \ref{eq:vtr} \cite{bowers2006, jordan2003}.
+\begin{equation}
+    {}_tV=VPA(\text{‘‘Obrigações do ente’’})-VPA(\text{‘‘Prêmios futuros’’})
+    \label{eq:vtp}
+\end{equation}
+\begin{equation} 
+    {}_tV=VA(\text{‘‘Prêmio recebidos’’})-VA(\text{‘‘Benefícios cedidos’’})
+    \label{eq:vtr} 
+\end{equation}
+
+Em um contexto previdenciário, o cálculo da PM tem como objetivo cobrir as obrigações futuras do ente frente aos seus segurados, sendo esta dividida em benefícios concedidos e benefícios a conceder \cite{chan2010, rodrigues2012risco}. Dessa forma, a PM geral é dividida em Provisões Matemáticas de Benefícios Concedidos (PMBC) e as Provisões Matemáticas de Benefícios a Conceder (PMBaC), como mostra a equação \ref{eq:pm_tot} \cite{rodrigues2012risco}.
+\begin{equation} 
+    PM_{total} = PMBC_{total} + PMBaC_{total}
+    \label{eq:pm_tot} 
+\end{equation}
+
+A distinção entre essas provisões reside na fase em que se encontram os beneficiários. A PMBC é constituída a partir do momento em que o segurado começa a usufruir dos benefícios. Neste ponto, espera-se que o plano tenha arrecadado toda a contribuição necessária do segurado e, portanto, a PMBC corresponde ao valor dos recursos garantidores necessários para o pagamento dos benefícios já em curso. Isto é, a PMBC equivale apenas ao Valor Atual dos Benefícios Futuros (VABF), devido à inexistência de novas contribuições. Nesse contexto, a equação \ref{eq:vtp} pode ser reescrita como \ref{eq:pmbc} \cite{rodrigues2012risco, gushiken2003rpps}.
+
+\begin{equation} 
+    PMBC_{total} = FCS \cdot 13 \cdot \Sigma [VABF^{i}_{Inativo}]
+    \label{eq:pmbc} 
+\end{equation}
+
+\noindent Onde $FCS$ representa o fator de capacidade salarial. Entretanto, o Art. 40 da Emenda Constitucional nº 41, de 19 de dezembro de 2003, em seu § 18 estabelece que será cobrado contribuição sobre os benecífios de aposentadorias e pensões outorgadas pelo RPPS que superem o limite máximo estabelecido para os benefícios do RGPS, aplicando-se a mesma alíquota dos servidores titulares de cargos efetivos. Nesse contexto, a equação da PMBC é a diferença entra o VABF e o Valor Atual das Contribuições Futuras (VACF) e pode ser obtida por \ref{eq:pmbcteto}.
+\begin{equation} 
+    PMBC = FCS \cdot 13 \cdot \Sigma [VABF_{Inativo}^{i} - VACF_{Inativo}^{i}]
+    \label{eq:pmbcteto} 
+\end{equation}
+
+\noindent O VABF utilizado tanto na equação \ref{eq:pmbc} quanto na equação \ref{eq:pmbcteto} pode ser obtido conforme \ref{eq:vabfpmbc} \cite{winklevoos1993}. Já o VACF usado na equação \ref{eq:pmbcteto} é cálculado usando a equação \ref{eq:vacfpmbc} \cite{rodrigues2012risco}, em que $B_r$ representa o benefício acumulado na idade $r$, ${}^{(\%)}CN$ representa o Custo Normal (CN) do plano e $\ddot{a}_x$ o fator de desconto atuarial na idade $x$.
+
+\begin{equation} 
+    VABF_{Inativo} = B_r \cdot \ddot{a}_x
+    \label{eq:vabfpmbc} 
+\end{equation}
+\begin{equation} 
+    VACF_{Inativo} = B_r \cdot \ddot{a}_x \cdot {}^{(\%)}CN
+    \label{eq:vacfpmbc} 
+\end{equation}
+
+Já a PMBaC, por sua vez, situa-se na fase de contribuição. Ou seja, refere-se aos benefícios que ainda serão concedidos no futuro. É calculada como a diferença entre as obrigações futuras do ente e a arrecadação das contribuições futuras. Portanto, nesse contexto, \ref{eq:vtp} se torna \ref{eq:pmbac}. Isto é, a PMBaC é a diferença entre VABF e VACF \cite{rodrigues2012risco}.
+\begin{equation} 
+    PMBaC_{total} = FCS \cdot 13 \cdot \Sigma [VABF_{Ativo}^{i} - VACF_{Ativo}^{i}]
+    \label{eq:pmbac} 
+\end{equation}
+
+A forma básica para o VABF de um segurado pode ser obtido conforme a equação \ref{eq:VABF}, conforme exposto em \citeonline{winklevoos1993}. O VACF, por sua vez, também pode ser encontrado em sua forma básica a partir da equação \ref{eq:VACF} \cite{rodrigues2012risco}.
+\begin{equation}
+    VABF_{Ativo} = B_r \cdot {}_{r-x}E_x \cdot \ddot{a}_r
+    \label{eq:VABF}
+\end{equation}
+\begin{equation}
+    VACF_{Ativo} = S_x \cdot {}^{(\%)}CN\cdot {}^{s}\ddot{a}_{x:r-x}
+    \label{eq:VACF}
+\end{equation}
+
+Onde $S_x$ representa o salário do participante na idade $x$, ${}^{s}\ddot{a}_{x:r-x}$ é fator de desconto atuarial temporário na idade $x$ com crescimento salarial, $r$ a idade de aposentadoria e ${}^{(\%)}CN$ representa CN do plano. O CN de um plano de previdência é definido como o valor das necessidades de custeio mensal calculadas atuarialmente. Em termos simples, é a contribuição suficiente para manter um fundo previdenciário em equilíbrio \cite{correa2020premissas}.
+
+\section{\textbf{Financiamento dos regimes próprios}}
+
+Para cumprir seus objetivos, um sistema previdenciário busca a gestão eficiente de seus recursos. Para tal, se espera que este seja financiável, sustentável e capaz de suportar oscilações econômicas, demográficas e políticas. Esses sistemas previdenciários são formados sob um regime financeiro (além de um método de custeio, no caso da capitalização) e uma modalidade \cite{feldstein2001}.
+
+No contexto de RPPS, devido ao benefício ser estabelecido na Constituição Federal, entende-se que essas entidades operem na modalidade de benefício definido.  Nesse sentido não há o que se falar em modalidades de planos em RPPS \cite{correa2020premissas}. No modelo BD, o participante sabe previamente o valor do benefício que receberá na sua aposentadoria, ou seja, o benefício é pré-determinado ou segue fórmulas estipuladas no regulamento. Os valores das contribuições, tanto do participante quanto do patrocinador, são calculados atuarialmente e podem variar ao longo do tempo para garantir o pagamento do benefício definido \cite{pinheiro2007}.
+
+\subsection{Regimes financeiros}
+
+Os regimes de financiamento são mecanismos que determinam como os recursos são arrecadados e utilizados para garantir o cumprimento das obrigações de aposentadorias e pensões \cite{correa2020premissas, pinheiro2007}. De acordo com o Art. 30 da Portaria 1.467/2022, os entes federativos poderão adotar, para apuração dos compromissos e determinação dos custos do plano de benefícios do RPPS, os seguintes regimes: a repartição de capitais por cobertura; e a capitalização.
+
+O regime de capitalização é baseado em poupança, constituindo dessa forma, uma provisão matemática ao longo da vida laboral do segurado. As contribuições são investidas em ativos financeiros com a premissa que as reservas financeiras formadas sejam suficientes para cobrir os compromissos futuros \cite{pinheiro2007}. O Art. 30 da referida Portaria, determina que o regime de capitalização deve ser usado para o cálculo dos compromissos futuros relativos às aposentadorias programadas e pensões por morte decorrentes dessas aposentadorias.
+
+O regime de capital de cobertura é uma combinação dos regimes de repartição e capitalização. Nesse regime a constituição da provisão acontece no momento de início de benefício \cite{pinheiro2007}. Este regime, como explica o Art. 30 da Portaria 1.467/2022, pode ser usado como o mínimo aplicável para cálculo envolvendo benefícios não programáveis, tais como: aposentadorias por invalidez, pensões por morte delas decorrentes e pensões por morte de segurados em atividade. 
+
+\subsection{Métodos de custeio}
+
+A forma como as contribuições são calculadas varia de acordo com o método de custeio adotado. Os métodos de custeio são as ferramentas utilizadas pelo atuário para estabelecer o nível de constituição das provisões necessárias para cobrir os benefícios \cite{correa2020premissas, pinheiro2007}. Segundo o Art. 31. da Portaria MTP nº 1.467/2022, deverá ser utilizado, para apuração do custo normal dos benefícios avaliados, um dos seguintes métodos de custeio: I - Crédito Unitário Projetado (CUP); II - Idade Normal de Entrada (INE);  III - Prêmio Nivelado Individual (PNI); IV - Agregado ou Ortodoxo.
+
+O CUP é método de custeio que possui a menor complexibilidade dentre os discutidos nessa subseção \cite{almeidavieira2024}. O CN é calculado com base em frações anuais projetadas desde a idade de início da contribuição do segurado até a idade estimada de aposentadoria. Além disso, as contribuições são individuais e tendem a ser crescentes ao longo da fase contributiva \cite{winklevoos1993}. Sendo assim, o valor das obrigações futuras do plano é capitalizado de maneira uniforme entre a idade de entrada $y$ e a idade de aposentadoria $r$ \cite{winklevoos1993}. Portanto, o CN por esse método é simplesmente o $VABF_x$ dividido pelo tempo total de contribuição, conforme mostra a equação \ref{eq:CN_cup} \cite{winklevoos1993, almeidavieira2024}. 
+\begin{equation}
+    CN_{CUP} = \frac{VABF^{i}_{x}}{r-y}
+    \label{eq:CN_cup}
+\end{equation}
+
+Consequentemente, para a apuração da PM nesse método é necessário observar da ausência das rendas aleatórias no cálculo do CN. Portanto, as contribuições futuras devem ser calculadas pelo produto entre o $CN_i$ e o tempo futuro de serviço, segundo a equação \ref{eq:VACF_cup} \cite{almeidavieira2024}.
+\begin{equation}
+    VACF_{CUP} = \frac{VABF^{i}_{x}}{r-y} \cdot (r - x)
+    \label{eq:VACF_cup}
+\end{equation}
+
+
+No método INE, o CN é mais constante ao longo do tempo. A contribuição é calculada uniformemente desde a data de admissão do participante, de modo que o VABF seja amortizado ao longo do período até a data de início do benefício \cite{winklevoos1993, andreson1992}. Este método é utilizado por muitos RPPS por apresentar um custo normal estável e ser mais robusto em relação ao envelhecimento populacional e à proximidade da aposentadoria, diferentemente do CUP, visto anteriormente \cite{almeidavieira2024}.
+
+Esse método pode ser expresso, segundo \citeonline{winklevoos1993}, como um valor fixo ao longo da vida laboral ou como uma porcentagem constante do salário do empregado. A fórmula do custo normal utilizada no presente trabalho para esse método de custeio é apresentada na equação \ref{eq:CN_ien}. Em decorrência dessa metodologia de cálculo do $CN_{INE}$, o $VACF_{INE}$ é calculado de acordo com a equação \ref{eq:VACF_ein}, conforme exposto por \citeonline{winklevoos1993}.
+\begin{equation}
+    CN_{INE} = \frac{VABF^{i}_{y}}{\ddot{a}_{y:r-y}}
+    \label{eq:CN_ien}
+\end{equation}
+\begin{equation}
+    VACF^{INE}_{x} = \frac{VABF^{i}_{y}}{\ddot{a}_{y:r-y}} \cdot \ddot{a}_{x:r-x}
+    \label{eq:VACF_ein}
+\end{equation}
+
+No método de custeio Prêmio Nivelado Individual (PNI), por sua vez, as contribuições são uniformizadas ao longo da fase contributiva. O CN nesse método tende a aumentar ao longo dos anos, sendo inferior no início, quando comparado ao método PUC, o que resulta em um crescimento exponencial da reserva garantidora \cite{almeidavieira2024}. A forma de obter o CN por esse método de custeio consiste em apurar uma Aliquota de Custo Normal (ACN) conforme a equação \ref{eq:ACN_pni}.
+\begin{equation}
+    ACN^{\%}_{i} = \frac{VABF^{i}_{y}}{VASF^{i}_{y}}
+    \label{eq:ACN_pni}
+\end{equation}
+
+Para calcular o $VACF_x$ nesse método de custeio, posterior ao cálculo de \ref{eq:ACN_pni}, é necessário também calcular o Valor Atual dos Salários Futuros (VASF), de acordo com a fórmula \ref{eq:VASF}. Portanto, o $VACF_x$ se dá pelo produto das equações \ref{eq:ACN_pni} e \ref{eq:VASF}, como exposto na equação \ref{eq:VACF_pni} \cite{almeidavieira2024}.
+\begin{equation}
+    VASF_{PNI} = \sum_{t=0}^{r-x-1} S_x\cdot(1+is)^{t} \cdot {}_{t}p_{x} \cdot v^{t}
+    \label{eq:VASF}
+\end{equation}
+\begin{equation}
+    VACF_{PNI} = ACN^{\%}_{i} \cdot VASF_{PNI}
+    \label{eq:VACF_pni}
+\end{equation}
+
+O método Agregado, diferente dos métodos individuais, consiste em financiar todo o passivo atuarial inicial e quaisquer ganhos e perdas atuariais que ocorram de forma prospectiva, ao longo do tempo de serviço restante até a aposentadoria. As contribuições são coletivas e podem ser constantes ou crescentes \cite{andreson1992}.
+
+Como explicam \citeonline{almeidavieira2024}, no método Agregado, essencialmente, não há apuração de desequilíbrios técnico-atuariais, uma vez que as alíquotas a serem aplicadas imediatamente após a avaliação atuarial são determinadas considerando-se a parcela do VABF ainda não coberta pelo patrimônio garantidor. Dessa forma, obtém-se, de maneira efetiva, uma alíquota de equilíbrio para a massa de segurados, tendo como referência o VASF conforme a equação \ref{eq:agg}.
+\begin{equation}
+    AE^{\%} = \frac{\Sigma VABF_i - PCP}{\Sigma VASF_i}
+    \label{eq:agg}
+\end{equation}
+
+\noindent Onde $PCP$ corresponde ao Patrimônio de Cobertura do Plano, ou seja, o ativo liquido reservado para o pagamento dos benefícios futuros. Dessa forma, com a equação \ref{eq:agg} é possível aplicar essa alíquota de equilíbrio sobre a $VASF$, como mostra a equação \ref{eq:vacf_agg}, e encontrar o $VACF$ nesse método de custeio \cite{almeidavieira2024}.
+\begin{equation}
+    VACF = AE^{\%} \cdot VASF
+    \label{eq:vacf_agg}
+\end{equation}
+
+\section{\textbf{Revisão da literatura}}
+
+Embora não tenham sido identificados estudos que explorem especificamente aspectos legais ou testem a aplicabilidade da legislação previdenciária no contexto dos cálculos atuariais, a literatura acadêmica apresenta contribuições significativas que convergem com a problemática desta pesquisa. Os trabalhos de \citeonline{castro2019, gonzaga2022, rocha2024} abordam principalmente aspectos técnicos relacionados aos riscos demográficos e à adequação das ferramentas atuariais utilizadas nos sistemas previdenciários brasileiros, fornecendo subsídios teóricos que fundamentam a análise proposta neste estudo.
+
+A pesquisa de \citeonline{castro2019} oferece um panorama essencial sobre a evolução da mortalidade no Brasil e o crescente risco de longevidade. O autor ressalta que as projeções da mortalidade são cruciais para estimar a expectativa de sobrevivência e subsidiar decisões governamentais sobre alocação de recursos e planejamento de políticas sociais e econômicas. Segundo \citeonline{castro2019} as tábuas de mortalidade estáticas, ao ignorarem o ganho de sobrevida, subestimam significativamente as responsabilidades atuariais das instituições previdenciárias. Para contornar essa falha, o trabalho de \citeonline{castro2019} propõe a construção de uma "Tábua BR-Geracional", que incorpora a perspectiva de sobrevivência futura de coorte, permitindo a quantificação do impacto do risco de longevidade nos diversos segmentos previdenciários brasileiros. Ele conclui que o risco de longevidade deve ser obrigatoriamente considerado no novo arcabouço legal.
+
+O estudo de \citeonline{gonzaga2022} aprofunda a análise dos diferenciais de mortalidade entre distintos grupos de beneficiários do Instituto Nacional do Seguro Social (INSS) no Brasil. Essa pesquisa demonstra que a mortalidade não é uniforme em toda a população. Por exemplo, os aposentados por idade urbana, rural e por tempo de contribuição geralmente vivem mais do que a média nacional, enquanto os beneficiários de amparos assistenciais apresentam maiores taxas de mortalidade. Essa constatação implica que a utilização de uma tábua de mortalidade genérica ou de critérios mínimos que não considerem a heterogeneidade da população segurada pode levar a cálculos atuariais imprecisos e a desequilíbrios financeiros e atuariais do sistema. O trabalho reforça a necessidade de estudos aprofundados sobre esses diferenciais para a correta avaliação do equilíbrio financeiro e atuarial.
+
+A importância de tábuas de mortalidade personalizadas é ainda mais salientada por \citeonline{rocha2024}, que se debruçaram sobre a mortalidade dos servidores públicos do RPPS do estado do Ceará. Este estudo demonstrou concretamente que a esperança de vida dos servidores públicos é significativamente mais elevada do que a da população nacional, com uma diferença superior a 10\% aos 60 anos de idade. Consequentemente, a adoção de tábuas de mortalidade baseadas na experiência da população geral brasileira pode subestimar as obrigações atuariais do RPPS. \citeonline{rocha2024} concluem que as tábuas de mortalidade específicas, elaboradas a partir da experiência do próprio grupo segurado, são mais eficazes e se ajustam melhor à realidade do regime de previdência, em comparação com tábuas nacionais ou internacionais comumente empregadas.
+
+Com base na fundamentação teórica apresentada, que detalhou os conceitos de sustentabilidade, o arcabouço regulatório dos RPPS, os princípios do cálculo atuarial dos métodos de financiamento, torna-se evidente a complexidade envolvida na gestão desses regimes. A análise da literatura expôs a criticidade da escolha das premissas atuariais, em especial as tábuas de mortalidade, e as lacunas existentes no que tange à validação de critérios normativos como o estabelecido no Art. 36 da Portaria MTP Nº 1.467/2022. Tendo estabelecido este referencial, o capítulo seguinte detalhará a metodologia empregada para investigar empiricamente o impacto deste critério sobre as provisões matemáticas, utilizando uma base de dados simulados.

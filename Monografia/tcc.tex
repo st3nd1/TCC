@@ -1,0 +1,553 @@
+% ===== Documento =====
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ===== Pacotes Necessários =====
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{svg}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{footnote}
+\usepackage[alf,abnt-etal-cite=3, abnt-etal-text=it]{abntex2cite}
+\usepackage{quoting}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{etoolbox}
+\usepackage{threeparttable}
+\usepackage[hang]{footmisc}
+\usepackage{placeins}
+\usepackage{pdfpages}
+
+% ===== CONFIGURAÇÕES DO TIKZ =====
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [ellipse, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=4cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, aspect=2, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% ===== COMANDO PARA SUMÁRIO EM MAIÚSCULAS =====
+\renewcommand{\contentsname}{SUMÁRIO}
+
+
+% ===== AMBIENTE PARA QUADROS =====
+\floatstyle{plaintop}
+\newfloat{quadro}{!ht}{lop}
+\floatname{quadro}{Quadro}
+
+% ======= CONFIGURAÇÃO LISTA DE QUADROS =======
+% Configurar a lista de quadros
+\newcommand{\listofquadros}{%
+    \listof{quadro}{\hfill\bfseries{LISTA DE QUADROS}\hfill}%
+}
+
+
+% ===== COMANDO PARA USAR " - " NA LISTAS =====
+\DeclareCaptionLabelSeparator*{cap_travessao}{ - }
+\captionsetup{labelsep=cap_travessao}
+
+% ===== CONFIGURAÇÕES DE PÁGINA =====
+\geometry{left=3cm, right=2cm, top=3cm, bottom=2cm}
+
+% ===== CORREÇÃO DO HEADHEIGHT =====
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+% ===== CONFIGURAÇÕES DE ESPAÇAMENTO =====
+\setstretch{1.5}
+\setlength{\parindent}{1.25cm}
+
+% ===== CONFIGURAÇÕES DE TÍTULOS E SEÇÕES =====
+% Títulos das seções primárias
+\titleformat{\chapter}[hang]
+{\normalfont\fontsize{12}{14}\selectfont}
+{\thechapter\quad}{0pt}{}
+\titlespacing*{\chapter}{0pt}{0pt}{0.5\baselineskip}
+
+% Títulos das seções secundárias
+\titleformat{\section}[hang]
+{\normalfont\fontsize{12}{14}\selectfont}
+{\thesection\quad}{0pt}{}
+\titlespacing*{\section}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+% Títulos das seções terciárias
+\titleformat{\subsection}[hang]
+{\normalfont\fontsize{12}{14}\selectfont}
+{\thesubsection\quad}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+% Títulos das seções quaternárias
+\titleformat{\subsubsection}[hang]
+{\normalfont\fontsize{12}{14}\selectfont}
+{\thesubsubsection\quad}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+% Títulos das seções quinárias
+\titleformat{\paragraph}[hang]
+{\normalfont\fontsize{12}{14}\selectfont}
+{\theparagraph\quad}{0pt}{}
+\titlespacing*{\paragraph}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+
+% ===== CONFIGURAÇÕES DE PAGINAÇÃO =====
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% ===== CONFIGURAÇÕES PARA ELEMENTOS PRÉ-TEXTUAIS =====
+\newcommand{\pretextual}{
+    \pagenumbering{gobble}
+}
+
+% Comando para iniciar numeração das páginas textuais
+\newcommand{\textual}{
+    \newpage
+    \pagenumbering{arabic}
+    \setcounter{page}{11}
+    \setlength{\parindent}{1.25cm}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \fancyhead[R]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% ===== CONFIGURAÇÃO PARA PÁGINAS DE CAPÍTULO =====
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \fancyhead[R]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% ===== CONFIGURAÇÕES DE CITAÇÕES LONGAS =====
+\quotingsetup{
+    leftmargin=4cm,
+    rightmargin=0cm,
+    font=small
+}
+
+% Cria o ambiente "citacao"
+\newenvironment{citacao}
+    {\begin{quoting}\singlespacing\parindent=0pt}
+    {\end{quoting}}
+
+% ===== CONFIGURAÇÕES DE NOTAS DE RODAPÉ =====
+\setlength{\footnotemargin}{1.5em}
+\renewcommand{\footnoterule}{
+    \kern -3pt
+    \hrule width 5cm height 0.4pt
+    \kern 2.6pt
+}
+\renewcommand{\footnotesize}{\fontsize{10}{12}\selectfont}
+\setlength{\footnotesep}{\baselineskip}
+
+% ===== CONFIGURAÇÕES DE LEGENDAS - CORRIGIDO PARA TAMANHO 10 E ESPAÇAMENTO SIMPLES =====
+\captionsetup{font={small,singlespacing}, labelfont=bf, format=hang,
+    justification=centering, singlelinecheck=false,}
+
+% Configuração específica para figuras
+\captionsetup[figure]{font={small,singlespacing}, labelfont=bf, format=hang,
+    justification=centering, singlelinecheck=false}
+
+% Configuração específica para tabelas/quadros
+\captionsetup[table]{font={small,singlespacing}, labelfont=bf, format=hang, 
+    justification=centering, singlelinecheck=false}
+
+\captionsetup[quadro]{font={small,singlespacing}, labelfont=bf, format=hang, 
+    justification=centering, singlelinecheck=false}
+
+% ===== CONFIGURAÇÕES DO SUMÁRIO =====
+\renewcommand{\cfttoctitlefont}{\hfill\bfseries\fontsize{12}{14}\selectfont\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0\baselineskip}
+
+% Remove identação do sumário
+\cftsetindents{section}{0em}{2.3em}
+\cftsetindents{subsection}{0em}{3.2em}
+\cftsetindents{subsubsection}{0em}{4.1em}
+\cftsetindents{paragraph}{0em}{5.0em}
+\cftsetindents{subparagraph}{0em}{6.0em}
+\setlength{\intextsep}{0pt}
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+
+% Remover a dependência do contador de capítulo
+\counterwithout{figure}{chapter}
+
+% Redefinir o formato do número da figura
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% Remover a dependência do contador de capítulo
+\counterwithout{table}{chapter}
+
+% Redefinir o formato do número da tabela
+\renewcommand{\thetable}{\arabic{table}}
+
+% Remover a dependência do contador de capítulo
+\counterwithout{equation}{chapter}
+
+% Redefinir o formato do número da equação
+\renewcommand{\theequation}{\arabic{equation}}
+
+% ===== INFORMAÇÕES DO DOCUMENTO =====
+% Definindo variáveis personalizadas
+\newcommand{\imprimirinstituicao}{UNIVERSIDADE FEDERAL DA PARAÍBA (UFPB) \\ CENTRO DE CIÊNCIAS SOCIAIS APLICADAS (CCSA) \\ DEPARTAMENTO DE FINANÇAS E CONTABILIDADE (DFC) \\ CURSO DE BACHARELADO EM CIÊNCIAS ATUARIAIS (CCA)}
+\newcommand{\imprimirautor}{JOÃO PEDRO STÊNIO FARIAS DA SILVA}
+\newcommand{\imprimirtitulo}{IMPACTO DA APLICAÇÃO DOS CRITÉRIOS MÍNIMOS PARA SELEÇÃO DE TÁBUAS DE MORTALIDADE SOBRE AS PROVISÕES MATEMÁTICAS DOS REGIMES PRÓPRIOS DE PREVIDÊNCIA SOCIAL}
+\newcommand{\imprimirlocal}{JOÃO PESSOA, PB}
+\newcommand{\imprimirdata}{\the\year}
+\newcommand{\imprimirorientador}{Prof. Me. Yuri Martí Santana Santos}
+\newcommand{\imprimircoorientador}{Prof. Dr. Luiz Carlos Santos Júnior}
+\newcommand{\imprimirpreambulo}{Trabalho de Conclusão de Curso como requisito parcial à obtenção do título de Bacharel em Ciências Atuariais pela Universidade Federal da Paraíba.}
+\newcommand{\dataDefesa}{30 de setembro de 2025}
+\newcommand{\examinadorA}{Prof. Bel. Hugo Vieira Sá Ferreira Gomes}
+\newcommand{\examinadorB}{Profa. Dra. Everlane Suane de Araújo da Silva}
+
+\title{IMPACTO DA APLICAÇÃO DOS CRITÉRIOS MÍNIMOS PARA SELEÇÃO DE TÁBUAS DE MORTALIDADE SOBRE AS PROVISÕES MATEMÁTICAS}
+\author{JOÃO PEDRO STÊNIO FARIAS DA SILVA}
+\date{\the\year}
+
+% ===== COMANDOS PERSONALIZADOS =====
+
+% Comando para centralizar títulos sem numeração
+\newcommand{\titulocentral}[1]{
+    \begin{center}
+    \textbf{\fontsize{12}{14}\selectfont #1}
+    \end{center}
+    \vspace{1.5\baselineskip}
+}
+
+% Comando para assinatura na folha de aprovação
+\newcommand{\assinatura}[3]{
+    \begin{center}
+        \rule{8cm}{0.2pt}\\
+        \textbf{#1}\\
+        #2\\
+        #3
+    \end{center}
+}
+
+% Comando para fonte
+\newcommand{\fonte}[1]{
+    \vspace{-\baselineskip}
+    \begin{flushleft}
+        \vspace{-1.0\baselineskip}
+        {\small\singlespacing Fonte: #1}
+        \vspace{-0.3\baselineskip}
+    \end{flushleft}
+}
+
+% Ambiente para folha de aprovação
+\newenvironment{folhadeaprovacao}{
+    \newpage
+    \setlength{\parindent}{0cm}
+}{
+    \setlength{\parindent}{1.25cm}
+}
+
+% ===== CONFIGURAÇÕES DE NÍVEIS DE SEÇÃO =====
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+
+% ===== INÍCIO DO DOCUMENTO =====
+\begin{document}
+
+% ===== CAPA =====
+\pretextual
+\setlength{\parindent}{0cm}
+
+\begin{center}
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[scale=0.20]{logo-ufpb.png}
+    \end{minipage}
+\end{center}
+
+\begin{center}
+    \begin{minipage}{1\textwidth}
+        \centering\normalsize\bfseries{
+            \imprimirinstituicao
+            \vspace{4mm}
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{2.0cm}
+
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering\normalsize\singlespacing{
+            \imprimirautor
+        }
+    \end{minipage}
+\end{center}
+
+\vspace{2.0cm}
+
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering\normalsize\bfseries\singlespacing{
+            \imprimirtitulo
+        }
+    \end{minipage}
+\end{center}
+
+\vfill
+
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering\normalsize\bfseries\singlespacing{
+            \textbf{\imprimirlocal \\ \imprimirdata}
+        }
+    \end{minipage}
+\end{center}
+
+\newpage
+
+% ===== FOLHA DE ROSTO =====
+\setlength{\parindent}{0cm}
+
+\begin{minipage}{\linewidth}
+    \centering\normalsize\singlespacing\imprimirautor
+\end{minipage}
+
+\vfill
+
+\begin{minipage}{\linewidth}
+    \begin{center}
+        \centering\normalsize\bfseries\singlespacing{\imprimirtitulo}
+    \end{center}
+    \vspace{2.0cm}
+    \begin{flushright}
+        \begin{minipage}{9cm}
+            \singlespacing\normalsize\imprimirpreambulo
+            \vspace{0.5cm}    
+
+            \textbf{Área de concentração:} Regime Próprio de Previdência Social.
+            
+            \vspace{0.5cm}
+            
+            \textbf{Orientador:} \imprimirorientador.
+
+            \vspace{0.5cm}
+    
+            \textbf{Coorientador:} \imprimircoorientador.
+            
+            \vspace{0.5cm}
+        \end{minipage}
+    \end{flushright}
+\end{minipage}
+
+\vfill
+
+\begin{minipage}{\linewidth}
+    \centering\normalsize\bfseries\singlespacing
+    \textbf{\imprimirlocal \\ \imprimirdata}
+\end{minipage}
+
+% ===== FICHA =====
+\newpage
+\includepdf[pages=-, fitpaper=true]{ficha_catalografica_71314.pdf}
+
+% ===== FOLHA DE APROVAÇÃO =====
+\newpage
+\begin{folhadeaprovacao}
+    \begin{center}
+        {\normalsize\singlespacing\imprimirautor}
+        \vspace*{\fill}\vspace*{\fill}
+        \begin{center}
+            \bfseries\normalsize\singlespacing\imprimirtitulo
+        \end{center}
+        \vspace*{\fill}
+        
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \singlespacing\imprimirpreambulo
+        \end{minipage}
+        \vspace*{\fill}
+    \end{center}
+    
+    \vspace{1.0cm}
+    
+    \begin{center}
+        \textbf{BANCA EXAMINADORA}
+    \end{center}
+    \vspace{0.5cm}
+    \assinatura{\imprimirorientador}{Orientador}{Universidade Federal da Paraíba (UFPB)}
+    \vspace{0.5cm}
+    \assinatura{\examinadorA}{Examinador}{Universidade Federal da Paraíba (UFPB)}
+    \vspace{0.5cm}
+    \assinatura{\examinadorB}{Examinadora}{Universidade Federal da Paraíba (UFPB)}
+    
+    
+\end{folhadeaprovacao}
+
+% ===== AGRADECIMENTOS =====
+\newpage
+\titulocentral{AGRADECIMENTOS}
+% !TEX root = tcc.tex
+\input{agradecimentos}
+
+
+% ===== RESUMO =====
+\newpage
+\titulocentral{RESUMO}
+% !TEX root = tcc.tex
+\input{resumo}
+
+% ===== ABSTRACT =====
+\newpage
+\titulocentral{ABSTRACT}
+% !TEX root = tcc.tex
+\input{abstract}
+
+% ===== LISTA DE QUADROS =====
+%\newpage
+%\listofquadros
+
+
+% ===== LISTA DE TABELAS =====
+\newpage
+
+% Título customizado
+\begin{center}
+    \normalsize\bfseries{LISTA DE TABELAS}
+\end{center}
+
+% Usando tocloft para eliminar completamente o título e seus espaços
+\renewcommand{\cftlottitlefont}{}
+\renewcommand{\listtablename}{}
+\setlength{\cftbeforelottitleskip}{-\baselineskip}
+\setlength{\cftafterlottitleskip}{0pt}
+
+% Adicionar "Quadro" antes do número na lista - versão alternativa
+\renewcommand{\cfttabpresnum}{\bfseries{Tabela~}}
+\renewcommand{\cfttabaftersnum}{~-~}
+\setlength{\cfttabnumwidth}{4.75em}
+\renewcommand{\cfttabdotsep}{\cftdotsep}
+\vspace{0.5cm}
+{\def\addvspace#1{}\listoftables}
+
+% ===== LISTA DE FIGURAS =====
+\newpage
+
+% Título customizado
+\begin{center}
+    \normalsize\bfseries{LISTA DE FIGURAS}
+\end{center}
+
+% Usando tocloft para eliminar completamente o título e seus espaços
+\renewcommand{\cftloftitlefont}{}
+\renewcommand{\listfigurename}{}
+\setlength{\cftbeforeloftitleskip}{-\baselineskip}
+\setlength{\cftafterloftitleskip}{0pt}
+
+% Adicionar "Figura" antes do número na lista
+\renewcommand{\cftfigpresnum}{\bfseries{Figura~}}
+\renewcommand{\cftfigaftersnum}{~-~}
+\setlength{\cftfignumwidth}{4.5em}
+\renewcommand{\cftfigdotsep}{\cftdotsep}
+\vspace{0.5cm}
+{\def\addvspace#1{}\listoffigures}
+
+
+% ===== LISTA DE ABREVIATURAS E SIGLAS =====
+\newpage
+
+% Título customizado sem espaço extra
+\begin{center}
+    \normalsize\bfseries{LISTA DE ABREVIATURAS E SIGLAS}
+\end{center}
+
+\fontsize{12}{14}\selectfont
+\begin{tabular}{ll}
+BD    & Benefício Definido \\
+CD    & Contribuição Definida \\
+CN    & Custo Normal \\
+CV    & Contribuição Variável \\
+CRP   & Certificado de Regularidade Previdenciária \\
+CUP   & Custo Unitário Projetado \\
+IBA   & Instituto Brasileiro de Atuária \\
+IBGE  & Instituto Brasileiro de Geografia e Estatística \\
+INE   & Idade Normal de Entrada \\
+INSS  & Instituto Nacional do Seguro Social \\
+PM    & Provisão Matemática \\
+PMBaC & Provisões Matemáticas de Benefícios a Conceder \\
+PMBC  & Provisões Matemáticas de Benefícios Concedidos \\
+PNI   & Prêmio Nivelado Individual \\
+RGPS  & Regime Geral de Previdência Social \\
+RPPS  & Regime Próprio de Previdência Social \\
+V.A.  & Variável Aleatória \\
+VABF  & Valor Atual dos Benefícios Futuros \\
+VACF  & Valor Atual das Contribuições Futuras \\
+\end{tabular}
+
+% ===== SUMÁRIO =====
+\newpage
+\tableofcontents
+
+% ===== INÍCIO DA PARTE TEXTUAL =====
+\textual
+
+% !TEX root = tcc.tex
+\include{cap_1}
+
+% !TEX root = tcc.tex
+\include{cap_2}
+
+% !TEX root = tcc.tex
+\include{cap_3}
+
+% !TEX root = tcc.tex
+\include{cap_4}
+
+% !TEX root = tcc.tex
+\include{cap_5}
+
+
+% ===== REFERÊNCIAS =====
+\newpage
+\renewcommand{\bibname}{REFERÊNCIAS}
+\bibliographystyle{abntex2-alf}
+\bibliography{referencias} 
+\addcontentsline{toc}{chapter}{REFERÊNCIAS}
+
+
+% ===== APÊNDICES =====
+
+% !TEX root = tcc.tex
+\include{apendice_A}
+
+% !TEX root = tcc.tex
+\include{apendice_B}
+
+% !TEX root = tcc.tex
+\include{apendice_C}
+
+
+
+\end{document}
