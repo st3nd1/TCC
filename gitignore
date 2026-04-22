@@ -1,0 +1,21 @@
+cat <<EOF > .gitignore
+
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+.latexmkrc
+.latexmkrc~
+*.aux
+*.log
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Outros
+.DS_Store
+.env
+EOF
